@@ -1,0 +1,33 @@
+//@import '../../common/colors.scss'
+
+/* @mixin color-pallet {
+  $primary-color:#0f171e;
+  $secondary-color:#1a242f;
+  $font-primary: #ffffff;
+  $font-secondary: #79b8f3;
+} */
+
+.header {
+  //@include color-pallet;
+  background-color: #1a242f;
+  height: 72px;
+  padding: 0px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.user-image, 
+.user-image img {
+  width: 38px;
+  height: 38px;
+}
+
+
+
