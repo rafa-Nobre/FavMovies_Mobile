@@ -1,14 +1,9 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-  ScrollView,
-} from 'react-native';
+import {View, Image, useWindowDimensions, ScrollView} from 'react-native';
 import Logo from '../../../assets/images/user.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import styles from './styles';
 
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
@@ -95,18 +90,5 @@ const SignInScreen = () => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    alignItems: 'center',
-    padding: 20,
-  },
-  logo: {
-    width: '70%',
-    maxWidth: 300,
-    maxHeight: 150,
-    marginBottom: 50,
-  },
-});
 
 export default SignInScreen;

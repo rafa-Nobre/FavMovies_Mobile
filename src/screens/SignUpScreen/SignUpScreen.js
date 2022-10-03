@@ -1,19 +1,14 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-  ScrollView,
-} from 'react-native';
-import Logo from '../../../assets/images/user.png';
+import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import styles from './styles';
 
 const SignUpScreen = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {height} = useWindowDimensions();
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const onSignInPressed = () => {
     console.warn('Entrou!');
@@ -42,7 +37,7 @@ const SignUpScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Cria uma conta!</Text>
+        <Text style={styles.title}>Criar uma conta!</Text>
         <CustomInput
           placeholder="Usuário"
           value={username}
@@ -55,12 +50,7 @@ const SignUpScreen = () => {
           secureTextEntry={true}
         />
 
-        <CustomButton text="Entrar" onPress={onSignInPressed} />
-        <CustomButton
-          text="Esqueceu sua senha?"
-          onPress={onForgotPasswordPressed}
-          type="TERTIARY"
-        />
+        <CustomButton text="Registrar" onPress={onSignInPressed} />
 
         <CustomButton
           text="Entrar com conta Google"
@@ -74,41 +64,9 @@ const SignUpScreen = () => {
           backColor="#E7EAF4"
           frontColor="#4765A9"
         />
-        <CustomButton
-          text="Entrar com conta Apple"
-          onPress={onSignInApplePressed}
-          backColor="#E3E3E3"
-          frontColor="#363636"
-        />
-
-        <CustomButton
-          text="Cadastrar"
-          onPress={onSignUpPressed}
-          type="TERTIARY"
-        />
-        {/*<Button onPress={onSignInPressed} title="Sign In" />*/}
       </View>
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    alignItems: 'center',
-    padding: 20,
-  },
-  logo: {
-    width: '70%',
-    maxWidth: 300,
-    maxHeight: 150,
-    marginBottom: 50,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#051C60',
-    margin: 10,
-  },
-});
 
 export default SignUpScreen;
