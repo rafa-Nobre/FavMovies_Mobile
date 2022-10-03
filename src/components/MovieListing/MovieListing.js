@@ -1,45 +1,48 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { getAllMovies, getAllShows } from '../../features/movies/movieSlice'
-import MovieCard from '../MovieCard/MovieCard'
-import './MovieListing.scss'
+import React from 'react';
+import {ScrollView, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
+import {getAllMovies, getAllShows} from '../../features/movies/movieSlice';
+import MovieCard from '../MovieCard/MovieCard';
+import './MovieListing.scss';
 
 const MovieListing = () => {
-  const movies = useSelector(getAllMovies)
-  const shows = useSelector(getAllShows)
+  const movies = useSelector(getAllMovies);
+  const shows = useSelector(getAllShows);
   let renderMovies,
-    renderShows = ''
+    renderShows = '';
   renderMovies =
     movies.Response === 'True' ? (
       movies.Search.map((movie, index) => (
         <MovieCard key={index} data={movie} />
       ))
     ) : (
-      <div className="movies-error">
-        <h3>{movies.Error}</h3>
-      </div>
-    )
+      <View className="movies-error">
+        <Text>{movies.Error}</Text>
+      </View>
+    );
 
   renderShows =
     shows.Response === 'True' ? (
       shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
     ) : (
-      <div className="shows-error">
-        <h3>{shows.Error}</h3>
-      </div>
-    )
+      <View className="shows-error">
+        <Text>{shows.Error}</Text>
+      </View>
+    );
   return (
-    <div className="movie-wrapper">
-      <div className="movie-list">
-        <h2>Movies</h2>
-        <div className="movie-container">{renderMovies}</div>
-      </div>
-      <div className="show-list">
-        <h2>Series</h2>
-        <div className="movie-container">{renderShows}</div>
-      </div>
-    </div>
-  )
-}
+    <ScrollView className="movie-wrapper">
+      <View className="movie-list">
+        <Text>Movies</Text>
+        <View className="movie-container">{renderMovies}</View>
+      </View>
+      <View className="show-list">
+        <Text>Series</Text>
+        <View className="movie-container">{renderShows}</View>
+      </View>
+    </ScrollView>
+  );
+};
 
-export default MovieListing
+const styles = StyleSheet.create({});
+
+export default MovieListing;

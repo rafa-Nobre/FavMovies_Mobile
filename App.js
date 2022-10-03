@@ -8,7 +8,8 @@
 
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, useColorScheme} from 'react-native';
-import SignInScreen from './src/screens/SignIn/SignInScreen';
+import SignInScreen from './src/screens/SignInScreen';
+import SignUpScreen from './src/screens/SignInScreen';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -16,7 +17,7 @@ import SignInScreen from './src/screens/SignIn/SignInScreen';
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <SignInScreen />
+      <SignUpScreen />
     </SafeAreaView>
   );
 };

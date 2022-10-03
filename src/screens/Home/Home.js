@@ -16,10 +16,10 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div className="banner-img"></div>
+    <View>
+      <View className="banner-img"></View>
       <MovieListing />
-    </div>
+    </View>
   );
 };
 
