@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
 import styles from './styles';
 
 const ConfirmEmailScreen = () => {
@@ -11,17 +10,11 @@ const ConfirmEmailScreen = () => {
   const onConfirmPressed = () => {
     console.warn('Confirmado!');
   };
-
-  const onTermsOfUsePressed = () => {
-    console.warn('Termos de uso');
-  };
-
-  const onPrivacyPressd = () => {
-    console.warn('Politica de privacidade');
-  };
-
   const onSignInPressed = () => {
     console.warn('Entrar!!');
+  };
+  const onResendCodePressed = () => {
+    console.warn('Reenviado!');
   };
 
   return (
@@ -36,7 +29,11 @@ const ConfirmEmailScreen = () => {
         />
 
         <CustomButton text="Confirmar" onPress={onConfirmPressed} />
-
+        <CustomButton
+          text="Reenviar código"
+          onPress={onResendCodePressed}
+          type="SECONDARY"
+        />
         <CustomButton
           text="Retornar para login"
           onPress={onSignInPressed}
