@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import SocialSignInButtons from '../../components/SocialSignInButtons';
 import styles from './styles';
 
 const SignUpScreen = () => {
@@ -10,59 +11,65 @@ const SignUpScreen = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const onRegisterPressed = () => {
+    console.warn('Registrou!');
+  };
+
+  const onTermsOfUsePressed = () => {
+    console.warn('Termos de uso');
+  };
+
+  const onPrivacyPressd = () => {
+    console.warn('Politica de privacidade');
+  };
+
   const onSignInPressed = () => {
-    console.warn('Entrou!');
-  };
-
-  const onSignInGooglePressed = () => {
-    console.warn('Entrou com Google!');
-  };
-
-  const onSignInFacebookPressed = () => {
-    console.warn('Entrou com Facebook!');
-  };
-
-  const onSignInApplePressed = () => {
-    console.warn('Entrou com Apple!');
-  };
-
-  const onForgotPasswordPressed = () => {
-    console.warn('Esqueceu!!');
-  };
-
-  const onSignUpPressed = () => {
-    console.warn('Cadastro!!');
+    console.warn('Entrar!!');
   };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
         <Text style={styles.title}>Criar uma conta!</Text>
+
         <CustomInput
           placeholder="Usuário"
           value={username}
           setValue={setUsername}
         />
+        <CustomInput placeholder="Email" value={email} setValue={setEmail} />
         <CustomInput
           placeholder="Senha"
           value={password}
           setValue={setPassword}
           secureTextEntry={true}
         />
-
-        <CustomButton text="Registrar" onPress={onSignInPressed} />
-
-        <CustomButton
-          text="Entrar com conta Google"
-          onPress={onSignInGooglePressed}
-          backColor="#FAE9EA"
-          frontColor="#DD4D44"
+        <CustomInput
+          placeholder="Confirme sua senha"
+          value={confirmPassword}
+          setValue={setConfirmPassword}
+          secureTextEntry={true}
         />
+
+        <CustomButton text="Registrar" onPress={onRegisterPressed} />
+
+        <Text style={styles.text}>
+          Ao registrar, você confirma que aceitou nossos{' '}
+          <Text style={styles.link} onPress={onTermsOfUsePressed}>
+            Termos de Uso
+          </Text>{' '}
+          e{' '}
+          <Text style={styles.link} onPress={onPrivacyPressd}>
+            Política de Privacidade
+          </Text>
+        </Text>
+
+        <SocialSignInButtons />
+
         <CustomButton
-          text="Entrar com Facebook"
-          onPress={onSignInFacebookPressed}
-          backColor="#E7EAF4"
-          frontColor="#4765A9"
+          text="Já possui uma conta? Faça login!"
+          onPress={onSignInPressed}
+          type="TERTIARY"
         />
       </View>
     </ScrollView>

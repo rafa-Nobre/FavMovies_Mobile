@@ -3,6 +3,7 @@ import {View, Image, useWindowDimensions, ScrollView} from 'react-native';
 import Logo from '../../../assets/images/user.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import SocialSignInButtons from '../../components/SocialSignInButtons';
 import styles from './styles';
 
 const SignInScreen = () => {
@@ -13,23 +14,9 @@ const SignInScreen = () => {
   const onSignInPressed = () => {
     console.warn('Entrou!');
   };
-
-  const onSignInGooglePressed = () => {
-    console.warn('Entrou com Google!');
-  };
-
-  const onSignInFacebookPressed = () => {
-    console.warn('Entrou com Facebook!');
-  };
-
-  const onSignInApplePressed = () => {
-    console.warn('Entrou com Apple!');
-  };
-
   const onForgotPasswordPressed = () => {
     console.warn('Esqueceu!!');
   };
-
   const onSignUpPressed = () => {
     console.warn('Cadastro!!');
   };
@@ -61,24 +48,7 @@ const SignInScreen = () => {
           type="TERTIARY"
         />
 
-        <CustomButton
-          text="Entrar com conta Google"
-          onPress={onSignInGooglePressed}
-          backColor="#FAE9EA"
-          frontColor="#DD4D44"
-        />
-        <CustomButton
-          text="Entrar com Facebook"
-          onPress={onSignInFacebookPressed}
-          backColor="#E7EAF4"
-          frontColor="#4765A9"
-        />
-        <CustomButton
-          text="Entrar com conta Apple"
-          onPress={onSignInApplePressed}
-          backColor="#E3E3E3"
-          frontColor="#363636"
-        />
+        <SocialSignInButtons />
 
         <CustomButton
           text="Cadastrar"
