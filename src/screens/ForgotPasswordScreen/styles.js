@@ -11,13 +11,6 @@ const styles = StyleSheet.create({
     color: '#79b8f3',
     margin: 10,
   },
-  text: {
-    color: 'gray',
-    marginVertical: 10,
-  },
-  link: {
-    color: '#FDB075',
-  },
 });
 
 export default styles;

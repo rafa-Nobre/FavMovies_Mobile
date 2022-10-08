@@ -5,16 +5,14 @@ import CustomButton from '../../components/CustomButton';
 import styles from './styles';
 
 const NewPasswordScreen = () => {
-  const [username, setUsername] = useState('');
+  const [code, setCode] = useState('');
+  const [newPassword, setNewPassword] = useState('');
 
-  const onSendPressed = () => {
+  const onSubmitPressed = () => {
     console.warn('Enviado!');
   };
   const onSignInPressed = () => {
     console.warn('Entrar!!');
-  };
-  const onResendCodePressed = () => {
-    console.warn('Reenviado!');
   };
 
   return (
@@ -22,13 +20,14 @@ const NewPasswordScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Redefinir Senha</Text>
 
+        <CustomInput placeholder="Código" value={code} setValue={setCode} />
         <CustomInput
-          placeholder="Nome de usuário"
-          value={username}
-          setValue={setUsername}
+          placeholder="Nova senha"
+          value={newPassword}
+          setValue={setNewPassword}
         />
 
-        <CustomButton text="Enviar" onPress={onSendPressed} />
+        <CustomButton text="Submeter" onPress={onSubmitPressed} />
 
         <CustomButton
           text="Retornar para login"

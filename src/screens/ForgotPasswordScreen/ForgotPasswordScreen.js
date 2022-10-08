@@ -13,9 +13,6 @@ const ForgotPasswordScreen = () => {
   const onSignInPressed = () => {
     console.warn('Entrar!!');
   };
-  const onResendCodePressed = () => {
-    console.warn('Reenviado!');
-  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
