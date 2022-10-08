@@ -3,15 +3,18 @@ import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
 
 const ForgotPasswordScreen = () => {
   const [username, setUsername] = useState('');
 
+  const navigation = useNavigation();
+
   const onSendPressed = () => {
-    console.warn('Enviado!');
+    navigation.navigate('NewPassword');
   };
   const onSignInPressed = () => {
-    console.warn('Entrar!!');
+    navigation.navigate('SignIn');
   };
 
   return (

@@ -3,18 +3,21 @@ import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
 
 const ConfirmEmailScreen = () => {
   const [codeSended, setCodeSended] = useState('');
 
+  const navigation = useNavigation();
+
   const onConfirmPressed = () => {
-    console.warn('Confirmado!');
+    navigation.navigate('Home');
   };
   const onSignInPressed = () => {
-    console.warn('Entrar!!');
+    navigation.navigate('SignIn');
   };
   const onResendCodePressed = () => {
-    console.warn('Reenviado!');
+    console.warn('Reenviado, cheque seu email!');
   };
 
   return (

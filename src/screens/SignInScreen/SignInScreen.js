@@ -5,20 +5,26 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
 
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const {height} = useWindowDimensions();
 
+  const navigation = useNavigation();
+
   const onSignInPressed = () => {
-    console.warn('Entrou!');
+    //console.warn('Entrou!');
+    navigation.navigate('Home');
   };
   const onForgotPasswordPressed = () => {
-    console.warn('Esqueceu!!');
+    //console.warn('Esqueceu!!');
+    navigation.navigate('ForgotPassword');
   };
   const onSignUpPressed = () => {
-    console.warn('Cadastro!!');
+    //console.warn('Cadastro!!');
+    navigation.navigate('SignUp');
   };
 
   return (
