@@ -4,7 +4,7 @@ import './Footer.scss';
 
 const Footer = () => {
   return (
-    <View className="footer" style={styles.container}>
+    <View style={styles.container}>
       <Text>Movie App</Text>
       <Text>©2022, Movie, Inc. and affiliates</Text>
     </View>
