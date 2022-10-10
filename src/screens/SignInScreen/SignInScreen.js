@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Image,
-  useWindowDimensions,
-  ScrollView,
-  TextInput,
-} from 'react-native';
+import {View, Image, useWindowDimensions, ScrollView} from 'react-native';
 import Logo from '../../../assets/images/user.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -19,11 +13,12 @@ const SignInScreen = () => {
 
   const navigation = useNavigation();
 
-  const {control, handleSubmit} = useForm();
+  const {control, handleSubmit, watch} = useForm();
 
   const onSignInPressed = data => {
+    const usernameValue = watch('username');
     console.log(data);
-    navigation.navigate('Home');
+    navigation.navigate('Home', usernameValue);
   };
   const onForgotPasswordPressed = () => {
     //console.warn('Esqueceu!!');

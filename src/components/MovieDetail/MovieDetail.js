@@ -1,25 +1,26 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import React, {useEffect} from 'react';
+import {View} from 'react-native';
+import {useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   fetchAsyncItemDetail,
   getSelectedItemDetail,
-  removeSelectedItem
-} from '../../features/movies/movieSlice'
-import './MovieDetail.scss'
+  removeSelectedItem,
+} from '../../features/movieSlice';
+import './MovieDetail.scss';
 
 const MovieDetail = () => {
-  const { imdbID } = useParams()
-  const dispatch = useDispatch()
-  const data = useSelector(getSelectedItemDetail)
-  console.log(data)
+  const {imdbID} = useParams();
+  const dispatch = useDispatch();
+  const data = useSelector(getSelectedItemDetail);
+  console.log(data);
 
   useEffect(() => {
-    dispatch(fetchAsyncItemDetail(imdbID))
+    dispatch(fetchAsyncItemDetail(imdbID));
     return () => {
-      dispatch(removeSelectedItem())
-    }
-  }, [dispatch, imdbID])
+      dispatch(removeSelectedItem());
+    };
+  }, [dispatch, imdbID]);
   return (
     <div className="movie-section">
       {Object.keys(data).length === 0 ? (
@@ -73,7 +74,7 @@ const MovieDetail = () => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default MovieDetail
+export default MovieDetail;

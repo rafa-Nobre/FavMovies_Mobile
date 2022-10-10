@@ -24,7 +24,7 @@ const CustomInput = ({
             ]}>
             <TextInput
               value={value}
-              onChange={onChange}
+              onChangeText={value => onChange(value)}
               onBlur={onBlur}
               placeholder={placeholder}
               secureTextEntry={secureTextEntry}

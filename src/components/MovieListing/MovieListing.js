@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {getAllMovies, getAllShows} from '../../features/movies/movieSlice';
 import MovieCard from '../MovieCard/MovieCard';
 import './MovieListing.scss';
+import styles from './styles';
 
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
@@ -30,19 +31,17 @@ const MovieListing = () => {
       </View>
     );
   return (
-    <ScrollView className="movie-wrapper">
+    <ScrollView>
       <View className="movie-list">
-        <Text>Movies</Text>
+        <Text style={styles.title}>Movies</Text>
         <View className="movie-container">{renderMovies}</View>
       </View>
       <View className="show-list">
-        <Text>Series</Text>
+        <Text style={styles.title}>Series</Text>
         <View className="movie-container">{renderShows}</View>
       </View>
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default MovieListing;

@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const HomeScreen = () => {
+const HomeScreen = ({route, navigation}) => {
+  const data = route.params;
   return (
     <View>
-      <Text style={{color: 'white'}}>Home!!</Text>
+      <Text>Entrou como:{data}</Text>
     </View>
   );
 };
