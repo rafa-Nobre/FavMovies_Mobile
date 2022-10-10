@@ -2,15 +2,17 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import styles from './styles';
+import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
+import styles from './styles';
 
 const ConfirmEmailScreen = () => {
-  const [codeSended, setCodeSended] = useState('');
+  const {control, handleSubmit} = useForm();
 
   const navigation = useNavigation();
 
-  const onConfirmPressed = () => {
+  const onConfirmPressed = data => {
+    console.warn(data);
     navigation.navigate('Home');
   };
   const onSignInPressed = () => {
@@ -27,11 +29,15 @@ const ConfirmEmailScreen = () => {
 
         <CustomInput
           placeholder="Insira o código"
-          value={codeSended}
-          setValue={setCodeSended}
+          name="code"
+          control={control}
+          rules={{required: 'Insira o código'}}
         />
 
-        <CustomButton text="Confirmar" onPress={onConfirmPressed} />
+        <CustomButton
+          text="Confirmar"
+          onPress={handleSubmit(onConfirmPressed)}
+        />
         <CustomButton
           text="Reenviar código"
           onPress={onResendCodePressed}

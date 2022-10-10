@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
   },
-  input: {},
 });
 
 export default styles;

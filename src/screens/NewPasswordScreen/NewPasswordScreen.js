@@ -2,16 +2,17 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import styles from './styles';
+import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
+import styles from './styles';
 
 const NewPasswordScreen = () => {
-  const [code, setCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const {control, handleSubmit} = useForm();
 
   const navigation = useNavigation();
 
-  const onSubmitPressed = () => {
+  const onSubmitPressed = data => {
+    console.warn(data);
     navigation.navigate('Home');
   };
   const onSignInPressed = () => {
@@ -23,14 +24,28 @@ const NewPasswordScreen = () => {
       <View style={styles.root}>
         <Text style={styles.title}>Redefinir Senha</Text>
 
-        <CustomInput placeholder="Código" value={code} setValue={setCode} />
+        <CustomInput
+          placeholder="Código"
+          name="code"
+          control={control}
+          rules={{required: 'Código necessário'}}
+        />
         <CustomInput
           placeholder="Nova senha"
-          value={newPassword}
-          setValue={setNewPassword}
+          name="new-password"
+          conrol={control}
+          secureTextEntry={true}
+          rules={{
+            required: 'Nova senha necessária',
+            minLength: {
+              value: 8,
+              message: 'Senha deve conter entre 8-16 caracteres',
+            },
+            maxLength: 16,
+          }}
         />
 
-        <CustomButton text="Submeter" onPress={onSubmitPressed} />
+        <CustomButton text="Submeter" onPress={handleSubmit(onSubmitPressed)} />
 
         <CustomButton
           text="Retornar para login"

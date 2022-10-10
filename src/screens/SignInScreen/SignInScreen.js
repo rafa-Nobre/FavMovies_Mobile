@@ -19,11 +19,7 @@ const SignInScreen = () => {
 
   const navigation = useNavigation();
 
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm();
+  const {control, handleSubmit} = useForm();
 
   const onSignInPressed = data => {
     console.log(data);
@@ -50,14 +46,28 @@ const SignInScreen = () => {
           name="username"
           placeholder="Usuário"
           control={control}
-          rules={{required: true}}
+          rules={{
+            required: 'Nome de usuário necessário',
+            minLength: {
+              value: 5,
+              message: 'Mínimo 5 e máximo de 20 caracteres',
+            },
+            maxLength: 20,
+          }}
         />
         <CustomInput
           name="password"
           placeholder="Senha"
           control={control}
           secureTextEntry={true}
-          rules={{required: true}}
+          rules={{
+            required: 'Senha necessária',
+            minLength: {
+              value: 8,
+              message: 'Senha deve ter de 8-16 caracteres',
+            },
+            maxLength: 16,
+          }}
         />
 
         <CustomButton text="Entrar" onPress={handleSubmit(onSignInPressed)} />
