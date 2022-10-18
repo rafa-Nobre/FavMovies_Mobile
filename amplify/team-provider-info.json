@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-loginauth-staging-231852-authRole",
+      "UnauthRoleArn": "arn:aws:iam::746667444749:role/amplify-loginauth-staging-231852-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::746667444749:role/amplify-loginauth-staging-231852-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-loginauth-staging-231852-deployment",
+      "UnauthRoleName": "amplify-loginauth-staging-231852-unauthRole",
+      "StackName": "amplify-loginauth-staging-231852",
+      "StackId": "arn:aws:cloudformation:sa-east-1:746667444749:stack/amplify-loginauth-staging-231852/108a22c0-4e72-11ed-8abf-02b6ef065a66",
+      "AmplifyAppId": "dcm8njxm3ouhp"
+    },
+    "categories": {
+      "auth": {
+        "LoginAuth": {}
+      }
+    }
+  }
+}
