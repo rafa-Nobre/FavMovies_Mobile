@@ -29,8 +29,9 @@ const SignInScreen = () => {
     if (loading) return;
     setLoading(true);
     try {
-      await Auth.signIn(data.username, data.password);
+      const response = await Auth.signIn(data.username, data.password);
       console.warn('Login bem sucedido!');
+      console.log(response);
       //navigation.navigate('Home', usernameValue);
     } catch (e) {
       Alert.alert('Oops', e.message);
