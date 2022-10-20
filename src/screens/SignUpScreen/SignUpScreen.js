@@ -28,12 +28,12 @@ const SignUpScreen = () => {
         password,
         attributes: {email, name, preferred_username: username},
       });
+      console.warn('Cadastro bem sucedido!');
       navigation.navigate('ConfirmEmail');
     } catch (e) {
       Alert.alert('Oops', e.message);
     }
     setLoading(false);
-    console.warn('Cadastro realizado com sucesso!');
   };
 
   const onTermsOfUsePressed = () => {

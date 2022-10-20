@@ -24,19 +24,18 @@ const SignInScreen = () => {
   const [loading, setLoading] = useState(false);
 
   const onSignInPressed = async data => {
+    // const usernameValue = watch('username');
+    // console.log(data);
     if (loading) return;
     setLoading(true);
     try {
-      const response = await Auth.signIn(data.username, data.password);
-      console.log(response);
-      navigation.navigate('Home', usernameValue);
+      await Auth.signIn(data.username, data.password);
+      console.warn('Login bem sucedido!');
+      //navigation.navigate('Home', usernameValue);
     } catch (e) {
       Alert.alert('Oops', e.message);
     }
     setLoading(false);
-    console.warn('Login bem sucedido!');
-    // const usernameValue = watch('username');
-    // console.log(data);
   };
   const onForgotPasswordPressed = () => {
     //console.warn('Esqueceu!!');
