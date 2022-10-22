@@ -21,12 +21,16 @@ const ConfirmEmailScreen = () => {
   const onConfirmPressed = async data => {
     // console.warn(data);
     // navigation.navigate('Home');
+    if (loading) return;
+    setLoading(true);
     try {
       await Auth.confirmSignUp(data.username, data.code);
       navigation.navigate('SignIn');
+      Alert.alert('Aviso', 'Email confirmado com sucesso!');
     } catch (e) {
       Alert.alert('Oops', e.message);
     }
+    setLoading(false);
   };
   const onSignInPressed = () => {
     navigation.navigate('SignIn');
@@ -60,7 +64,7 @@ const ConfirmEmailScreen = () => {
         />
 
         <CustomButton
-          text="Confirmar"
+          text={loading ? 'Carregando...' : 'Confirmar'}
           onPress={handleSubmit(onConfirmPressed)}
         />
         <CustomButton
