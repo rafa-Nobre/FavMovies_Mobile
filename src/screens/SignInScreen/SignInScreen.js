@@ -35,8 +35,9 @@ const SignInScreen = () => {
       //navigation.navigate('Home', usernameValue);
     } catch (e) {
       Alert.alert('Oops', e.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
   const onForgotPasswordPressed = () => {
     //console.warn('Esqueceu!!');
