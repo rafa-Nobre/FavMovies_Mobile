@@ -23,8 +23,9 @@ const ForgotPasswordScreen = () => {
       navigation.navigate('NewPassword');
     } catch (e) {
       Alert.alert('Oops', e.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
   const onSignInPressed = () => {
     navigation.navigate('SignIn');

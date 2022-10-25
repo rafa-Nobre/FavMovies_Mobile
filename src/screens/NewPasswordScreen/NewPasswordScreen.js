@@ -24,8 +24,9 @@ const NewPasswordScreen = () => {
       Alert.alert('Aviso', 'Senha redefinida com sucesso!');
     } catch (e) {
       Alert.alert('Oops', e.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
   const onSignInPressed = () => {
     navigation.navigate('SignIn');
