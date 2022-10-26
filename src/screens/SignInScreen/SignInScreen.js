@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, Image, useWindowDimensions, ScrollView} from 'react-native';
+import {
+  View,
+  Image,
+  useWindowDimensions,
+  ScrollView,
+  Alert,
+} from 'react-native';
 import Logo from '../../../assets/images/user.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -7,6 +13,7 @@ import SocialSignInButtons from '../../components/SocialSignInButtons';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
+import {Auth} from 'aws-amplify';
 
 const SignInScreen = () => {
   const {height} = useWindowDimensions();
@@ -14,11 +21,23 @@ const SignInScreen = () => {
   const navigation = useNavigation();
 
   const {control, handleSubmit, watch} = useForm();
+  const [loading, setLoading] = useState(false);
 
-  const onSignInPressed = data => {
-    const usernameValue = watch('username');
-    console.log(data);
-    navigation.navigate('Home', usernameValue);
+  const onSignInPressed = async data => {
+    // const usernameValue = watch('username');
+    // console.log(data);
+    if (loading) return;
+    setLoading(true);
+    try {
+      const response = await Auth.signIn(data.username, data.password);
+      console.warn('Login bem sucedido!');
+      console.log(response);
+      //navigation.navigate('Home', usernameValue);
+    } catch (e) {
+      Alert.alert('Oops', e.message);
+    } finally {
+      setLoading(false);
+    }
   };
   const onForgotPasswordPressed = () => {
     //console.warn('Esqueceu!!');
@@ -65,7 +84,10 @@ const SignInScreen = () => {
           }}
         />
 
-        <CustomButton text="Entrar" onPress={handleSubmit(onSignInPressed)} />
+        <CustomButton
+          text={loading ? 'Carregando...' : 'Entrar'}
+          onPress={handleSubmit(onSignInPressed)}
+        />
         <CustomButton
           text="Esqueceu sua senha?"
           onPress={onForgotPasswordPressed}
