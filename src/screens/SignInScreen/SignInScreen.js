@@ -27,12 +27,18 @@ const SignInScreen = () => {
     // const usernameValue = watch('username');
     // console.log(data);
     if (loading) return;
+
     setLoading(true);
     try {
+      console.log(
+        'SignInScreen ~ onSignInPressed ~ 32 ~ username, password',
+        data.username,
+        data.password,
+      );
       const response = await Auth.signIn(data.username, data.password);
+
       console.warn('Login bem sucedido!');
-      console.log(response);
-      //navigation.navigate('Home', usernameValue);
+      console.log('SignInScreen ~ onSignInPressed ~ 40 ~ response', response);
     } catch (e) {
       Alert.alert('Oops', e.message);
     } finally {

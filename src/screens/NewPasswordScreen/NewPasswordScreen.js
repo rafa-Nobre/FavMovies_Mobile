@@ -20,8 +20,8 @@ const NewPasswordScreen = () => {
     setLoading(true);
     try {
       await Auth.forgotPasswordSubmit(data.username, data.code, data.password);
-      navigation.navigate('SignIn');
       Alert.alert('Aviso', 'Senha redefinida com sucesso!');
+      navigation.navigate('SignIn');
     } catch (e) {
       Alert.alert('Oops', e.message);
     } finally {
@@ -52,7 +52,7 @@ const NewPasswordScreen = () => {
         <CustomInput
           placeholder="Nova senha"
           name="password"
-          conrol={control}
+          control={control}
           secureTextEntry={true}
           rules={{
             required: 'Nova senha necessária',
