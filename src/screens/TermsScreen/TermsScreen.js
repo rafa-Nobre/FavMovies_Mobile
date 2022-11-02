@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
+import {Text} from 'react-native-paper';
 
 import styles from './styles';
 
@@ -7,7 +8,7 @@ const TermsScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={styles.title}>TERMOS DE USO</Text>
+        <Text style={styles.title}>CONSENTIMENTO</Text>
         <Text style={styles.paragraph}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget
           maximus eros, a imperdiet odio. Vestibulum et erat sollicitudin,
@@ -41,7 +42,7 @@ const TermsScreen = () => {
           sagittis convallis. Fusce ante libero, maximus et dui id, auctor
           dignissim erat.
         </Text>
-        <Text style={styles.title}>POLITICA DE PRIVACIDADE</Text>
+        <Text style={styles.title}>POLÍTICA DE PRIVACIDADE</Text>
         <Text style={styles.paragraph}>
           Nam consectetur turpis et nunc vulputate, ut hendrerit risus laoreet.
           Phasellus ac orci sapien. Fusce molestie posuere purus, hendrerit

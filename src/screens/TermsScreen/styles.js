@@ -7,10 +7,15 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: 10,
+    marginLeft: 12,
+    marginRight: 12,
     fontSize: 20,
+    fontWeight: 'bold',
   },
   paragraph: {
     marginBottom: 15,
+    marginLeft: 12,
+    marginRight: 12,
     fontSize: 12,
   },
 });
