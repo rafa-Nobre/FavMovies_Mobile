@@ -7,8 +7,8 @@ const TermsScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={{marginTop: 10, fontSize: 20}}>TERMOS DE USO</Text>
-        <Text style={{marginTop: 10, fontSize: 12}}>
+        <Text style={styles.title}>TERMOS DE USO</Text>
+        <Text style={styles.paragraph}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget
           maximus eros, a imperdiet odio. Vestibulum et erat sollicitudin,
           varius dolor vel, dictum purus. Mauris ullamcorper magna magna,
@@ -19,7 +19,7 @@ const TermsScreen = () => {
           Ut consectetur tellus est, sed bibendum risus semper et. Etiam congue
           quam at lorem imperdiet, sit amet placerat nisl ullamcorper.
         </Text>
-        <Text style={{marginTop: 10, fontSize: 12}}>
+        <Text style={styles.paragraph}>
           Aenean sed libero quis massa tincidunt commodo eget hendrerit orci.
           Nunc urna libero, eleifend sit amet consequat eu, semper ac elit.
           Aenean tempus neque vestibulum leo ultrices vulputate. Phasellus
@@ -27,7 +27,7 @@ const TermsScreen = () => {
           suscipit sit amet magna ut, pulvinar tempor diam. Nam sollicitudin
           purus convallis malesuada auctor. Morbi auctor imperdiet lacinia.
         </Text>
-        <Text style={{marginTop: 10, marginBottom: 10, fontSize: 12}}>
+        <Text style={styles.paragraph}>
           Quisque porta facilisis metus et vehicula. Sed dictum euismod nulla
           vitae sollicitudin. Phasellus semper sem id mi vulputate ultricies.
           Nunc eget purus quis elit dictum gravida. Maecenas in diam id dolor
@@ -41,10 +41,8 @@ const TermsScreen = () => {
           sagittis convallis. Fusce ante libero, maximus et dui id, auctor
           dignissim erat.
         </Text>
-        <Text style={{marginTop: 10, fontSize: 20}}>
-          POLITICA DE PRIVACIDADE
-        </Text>
-        <Text style={{marginTop: 10, fontSize: 12}}>
+        <Text style={styles.title}>POLITICA DE PRIVACIDADE</Text>
+        <Text style={styles.paragraph}>
           Nam consectetur turpis et nunc vulputate, ut hendrerit risus laoreet.
           Phasellus ac orci sapien. Fusce molestie posuere purus, hendrerit
           molestie nulla fringilla nec. Suspendisse tincidunt ornare est, a
@@ -57,7 +55,7 @@ const TermsScreen = () => {
           sodales vestibulum. Donec dictum eros nec auctor egestas. Proin
           laoreet nisl eget diam maximus, a vehicula urna ultrices.
         </Text>
-        <Text style={{marginTop: 10, fontSize: 12}}>
+        <Text style={styles.paragraph}>
           Pellentesque vulputate vehicula eros rutrum rutrum. Cras cursus est
           eget lectus gravida, id aliquam sapien eleifend. Curabitur varius,
           urna et convallis porta, orci lorem iaculis sapien, ac malesuada dui
@@ -65,7 +63,7 @@ const TermsScreen = () => {
           eleifend blandit mi. Nam non augue ipsum. Fusce eget vulputate ante,
           eget pellentesque sem. Mauris vel vehicula enim, eu consequat sapien.
         </Text>
-        <Text style={{marginTop: 10, fontSize: 12}}>
+        <Text style={styles.paragraph}>
           Suspendisse non enim aliquet purus euismod tempor. Aliquam eu velit
           orci. Etiam luctus nulla purus. Aliquam tempor efficitur ipsum sit
           amet lacinia. In hac habitasse platea dictumst. Donec fringilla

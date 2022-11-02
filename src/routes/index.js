@@ -49,20 +49,45 @@ const Routes = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator>
         {user ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{title: 'Início'}}
+          />
         ) : (
           <>
-            <Stack.Screen name="SignIn" component={SignInScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
+            <Stack.Screen
+              name="SignIn"
+              component={SignInScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="SignUp"
+              component={SignUpScreen}
+              options={{title: 'Cadastro'}}
+            />
+            <Stack.Screen
+              name="ConfirmEmail"
+              component={ConfirmEmailScreen}
+              options={{title: 'Confirmação de Email'}}
+            />
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordScreen}
+              options={{title: 'Recuperar Senha'}}
             />
-            <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
-            <Stack.Screen name="Terms" component={TermsScreen} />
+            <Stack.Screen
+              name="NewPassword"
+              component={NewPasswordScreen}
+              options={{title: 'Recuperar Senha'}}
+            />
+            <Stack.Screen
+              name="Terms"
+              component={TermsScreen}
+              options={{title: 'Termos de Uso'}}
+            />
           </>
         )}
       </Stack.Navigator>
