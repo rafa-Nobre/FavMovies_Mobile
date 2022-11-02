@@ -55,61 +55,57 @@ const SignInScreen = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
-        <Image
-          source={Logo}
-          style={[styles.logo, {height: height * 0.3}]}
-          resizeMode="contain"
-        />
-        <CustomInput
-          name="username"
-          placeholder="Usuário"
-          control={control}
-          rules={{
-            required: 'Nome de usuário necessário',
-            minLength: {
-              value: 5,
-              message: 'Mínimo 5 e máximo de 20 caracteres',
-            },
-            maxLength: 20,
-          }}
-        />
-        <CustomInput
-          name="password"
-          placeholder="Senha"
-          control={control}
-          secureTextEntry={true}
-          rules={{
-            required: 'Senha necessária',
-            minLength: {
-              value: 8,
-              message: 'Senha deve ter de 8-16 caracteres',
-            },
-            maxLength: 16,
-          }}
-        />
+    <View style={styles.root}>
+      <Image
+        source={Logo}
+        style={[styles.logo, {height: height * 0.3}]}
+        resizeMode="contain"
+      />
+      <CustomInput
+        name="username"
+        placeholder="Usuário"
+        control={control}
+        rules={{
+          required: 'Nome de usuário necessário',
+          minLength: {
+            value: 5,
+            message: 'Mínimo 5 e máximo de 20 caracteres',
+          },
+          maxLength: 20,
+        }}
+      />
+      <CustomInput
+        name="password"
+        placeholder="Senha"
+        control={control}
+        secureTextEntry={true}
+        rules={{
+          required: 'Senha necessária',
+          minLength: {
+            value: 8,
+            message: 'Senha deve ter de 8-16 caracteres',
+          },
+          maxLength: 16,
+        }}
+      />
 
-        <CustomButton
-          text={loading ? 'Carregando...' : 'Entrar'}
-          onPress={handleSubmit(onSignInPressed)}
-        />
-        <CustomButton
-          text="Esqueceu sua senha?"
-          onPress={onForgotPasswordPressed}
-          type="TERTIARY"
-        />
+      <CustomButton
+        text={loading ? 'Carregando...' : 'Entrar'}
+        onPress={handleSubmit(onSignInPressed)}
+      />
+      <CustomButton
+        text="Esqueceu sua senha?"
+        onPress={onForgotPasswordPressed}
+        type="TERTIARY"
+      />
 
-        <SocialSignInButtons />
-
-        <CustomButton
-          text="Cadastrar"
-          onPress={onSignUpPressed}
-          type="TERTIARY"
-        />
-        {/*<Button onPress={onSignInPressed} title="Sign In" />*/}
-      </View>
-    </ScrollView>
+      <CustomButton
+        text="Cadastrar"
+        onPress={onSignUpPressed}
+        type="TERTIARY"
+      />
+      {/*<Button onPress={onSignInPressed} title="Sign In" />*/}
+    </View>
   );
 };
 

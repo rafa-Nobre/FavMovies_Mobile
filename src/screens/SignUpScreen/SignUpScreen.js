@@ -48,8 +48,6 @@ const SignUpScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Criar uma conta!</Text>
-
         <CustomInput
           placeholder="Nome"
           control={control}
@@ -121,8 +119,6 @@ const SignUpScreen = () => {
             Termos de Uso
           </Text>
         </Text>
-
-        <SocialSignInButtons />
 
         <CustomButton
           text="Já possui uma conta? Faça login!"
