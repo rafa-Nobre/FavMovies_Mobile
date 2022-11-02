@@ -38,11 +38,7 @@ const SignUpScreen = () => {
   };
 
   const onTermsOfUsePressed = () => {
-    console.warn('Termos de uso');
-  };
-
-  const onPrivacyPressd = () => {
-    console.warn('Politica de privacidade');
+    navigation.navigate('Terms');
   };
 
   const onSignInPressed = () => {
@@ -123,10 +119,6 @@ const SignUpScreen = () => {
           Ao registrar, você confirma que aceitou nossos{' '}
           <Text style={styles.link} onPress={onTermsOfUsePressed}>
             Termos de Uso
-          </Text>{' '}
-          e{' '}
-          <Text style={styles.link} onPress={onPrivacyPressd}>
-            Política de Privacidade
           </Text>
         </Text>
 
