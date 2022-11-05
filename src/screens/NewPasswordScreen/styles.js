@@ -5,6 +5,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  inputContainer: {
+    width: '100%',
+    justifyContent: 'flex-start',
+    marginBottom: 25,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
