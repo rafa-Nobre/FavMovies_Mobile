@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView, Alert} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
 import {EMAIL_REGEX} from '../../utils';
