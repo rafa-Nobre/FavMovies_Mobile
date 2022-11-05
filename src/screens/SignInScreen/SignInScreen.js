@@ -53,6 +53,10 @@ const SignInScreen = () => {
     navigation.navigate('SignUp');
   };
 
+  const onTermsOfUsePressed = () => {
+    navigation.navigate('Terms');
+  };
+
   return (
     <View style={styles.root}>
       <Image
