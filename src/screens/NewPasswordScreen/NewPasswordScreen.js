@@ -1,19 +1,32 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Alert} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
+import {Auth} from 'aws-amplify';
 import styles from './styles';
 
 const NewPasswordScreen = () => {
   const {control, handleSubmit} = useForm();
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
-  const onSubmitPressed = data => {
-    console.warn(data);
-    navigation.navigate('Home');
+  const onSubmitPressed = async data => {
+    // console.warn(data);
+    // navigation.navigate('Home');
+    if (loading) return;
+    setLoading(true);
+    try {
+      await Auth.forgotPasswordSubmit(data.username, data.code, data.password);
+      Alert.alert('Aviso', 'Senha redefinida com sucesso!');
+      navigation.navigate('SignIn');
+    } catch (e) {
+      Alert.alert('Oops', e.message);
+    } finally {
+      setLoading(false);
+    }
   };
   const onSignInPressed = () => {
     navigation.navigate('SignIn');
@@ -25,6 +38,12 @@ const NewPasswordScreen = () => {
         <Text style={styles.title}>Redefinir Senha</Text>
 
         <CustomInput
+          placeholder="Nome de Usuário"
+          name="username"
+          control={control}
+          rules={{required: 'Nome de usuário necessário'}}
+        />
+        <CustomInput
           placeholder="Código"
           name="code"
           control={control}
@@ -32,8 +51,8 @@ const NewPasswordScreen = () => {
         />
         <CustomInput
           placeholder="Nova senha"
-          name="new-password"
-          conrol={control}
+          name="password"
+          control={control}
           secureTextEntry={true}
           rules={{
             required: 'Nova senha necessária',
