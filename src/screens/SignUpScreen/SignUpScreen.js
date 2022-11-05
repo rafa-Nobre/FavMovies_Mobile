@@ -1,44 +1,31 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, Alert} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
 import {EMAIL_REGEX} from '../../utils';
-import {Auth} from 'aws-amplify';
 import styles from './styles';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
 
   const {control, handleSubmit, watch} = useForm();
-  const [loading, setLoading] = useState(false);
 
   const passwordValue = watch('password');
 
-  const onRegisterPressed = async data => {
-    if (loading) return;
-    setLoading(true);
-    const {username, password, email, name} = data;
-
-    try {
-      await Auth.signUp({
-        username,
-        password,
-        attributes: {email, name, preferred_username: username},
-      });
-      console.warn('Cadastro bem sucedido!');
-      navigation.navigate('ConfirmEmail', {username});
-    } catch (e) {
-      Alert.alert('Oops', e.message);
-    } finally {
-      setLoading(false);
-    }
+  const onRegisterPressed = data => {
+    console.warn(data);
+    navigation.navigate('ConfirmEmail');
   };
 
   const onTermsOfUsePressed = () => {
-    navigation.navigate('Terms');
+    console.warn('Termos de uso');
+  };
+
+  const onPrivacyPressd = () => {
+    console.warn('Politica de privacidade');
   };
 
   const onSignInPressed = () => {
@@ -48,19 +35,8 @@ const SignUpScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <CustomInput
-          placeholder="Nome"
-          control={control}
-          name="name"
-          rules={{
-            required: 'Nome necessário',
-            minLength: {
-              value: 5,
-              message: 'Mínimo 5 e máximo de 50 caracteres',
-            },
-            maxLength: 50,
-          }}
-        />
+        <Text style={styles.title}>Criar uma conta!</Text>
+
         <CustomInput
           placeholder="Usuário"
           control={control}
@@ -109,7 +85,7 @@ const SignUpScreen = () => {
         />
 
         <CustomButton
-          text={loading ? 'Carregando...' : 'Registrar'}
+          text="Registrar"
           onPress={handleSubmit(onRegisterPressed)}
         />
 
@@ -117,8 +93,14 @@ const SignUpScreen = () => {
           Ao registrar, você confirma que aceitou nossos{' '}
           <Text style={styles.link} onPress={onTermsOfUsePressed}>
             Termos de Uso
+          </Text>{' '}
+          e{' '}
+          <Text style={styles.link} onPress={onPrivacyPressd}>
+            Política de Privacidade
           </Text>
         </Text>
+
+        <SocialSignInButtons />
 
         <CustomButton
           text="Já possui uma conta? Faça login!"
