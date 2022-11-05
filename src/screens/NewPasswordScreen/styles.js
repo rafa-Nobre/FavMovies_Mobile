@@ -10,12 +10,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     marginBottom: 25,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#79b8f3',
-    margin: 10,
-  },
 });
 
 export default styles;
