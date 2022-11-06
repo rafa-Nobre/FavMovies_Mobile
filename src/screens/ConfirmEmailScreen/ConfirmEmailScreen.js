@@ -33,9 +33,6 @@ const ConfirmEmailScreen = () => {
       setLoading(false);
     }
   };
-  const onSignInPressed = () => {
-    navigation.navigate('SignIn');
-  };
   const onResendCodePressed = async () => {
     try {
       await Auth.resendSignUp(userData);
@@ -48,36 +45,44 @@ const ConfirmEmailScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Confirme seu email!</Text>
+        <View style={styles.inputContainer}>
+          <Text>Nome de Usuário</Text>
+          <CustomInput
+            placeholder="Insira o nome de usuário"
+            name="username"
+            control={control}
+            rules={{required: 'Insira o nome de usuário'}}
+          />
+        </View>
 
-        <CustomInput
-          placeholder="Insira o nome de usuário"
-          name="username"
-          control={control}
-          rules={{required: 'Insira o nome de usuário'}}
-        />
-
-        <CustomInput
-          placeholder="Insira o código"
-          name="code"
-          control={control}
-          rules={{required: 'Insira o código'}}
-        />
+        <View style={styles.inputContainer}>
+          <Text>Código</Text>
+          <CustomInput
+            placeholder="Insira o código enviado"
+            name="code"
+            control={control}
+            rules={{required: 'Insira o código'}}
+          />
+        </View>
 
         <CustomButton
-          text={loading ? 'Carregando...' : 'Confirmar'}
+          text={loading ? 'Carregando...' : 'Submeter'}
           onPress={handleSubmit(onConfirmPressed)}
         />
-        <CustomButton
-          text="Reenviar código"
-          onPress={onResendCodePressed}
-          type="SECONDARY"
-        />
-        <CustomButton
+
+        <View style={{marginTop: 30}}>
+          <CustomButton
+            text="Reenviar código"
+            onPress={onResendCodePressed}
+            type="SECONDARY"
+          />
+        </View>
+
+        {/* <CustomButton
           text="Retornar para login"
           onPress={onSignInPressed}
           type="TERTIARY"
-        />
+        /> */}
       </View>
     </ScrollView>
   );
