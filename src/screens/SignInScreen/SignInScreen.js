@@ -9,7 +9,6 @@ import {
 import Logo from '../../../assets/images/user.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
@@ -52,6 +51,10 @@ const SignInScreen = () => {
   const onSignUpPressed = () => {
     //console.warn('Cadastro!!');
     navigation.navigate('SignUp');
+  };
+
+  const onTermsOfUsePressed = () => {
+    navigation.navigate('Terms');
   };
 
   return (
@@ -104,7 +107,6 @@ const SignInScreen = () => {
         onPress={onSignUpPressed}
         type="TERTIARY"
       />
-      {/*<Button onPress={onSignInPressed} title="Sign In" />*/}
     </View>
   );
 };
