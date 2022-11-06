@@ -3,13 +3,19 @@ import {View, Text, ScrollView, Alert} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useForm} from 'react-hook-form';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {Auth} from 'aws-amplify';
 import styles from './styles';
 
 const NewPasswordScreen = () => {
-  const {control, handleSubmit} = useForm();
+  const route = useRoute();
+  const {control, handleSubmit} = useForm({
+    defaultValues: {username: route?.params?.username},
+  });
   const [loading, setLoading] = useState(false);
+
+  // const {control, handleSubmit, watch} = useForm(,
+  // });
 
   const navigation = useNavigation();
 

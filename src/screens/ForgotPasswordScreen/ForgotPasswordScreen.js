@@ -16,11 +16,12 @@ const ForgotPasswordScreen = () => {
   const onSendPressed = async data => {
     // console.warn(data);
     // navigation.navigate('NewPassword');
+    const username = data;
     if (loading) return;
     setLoading(true);
     try {
       await Auth.forgotPassword(data.username);
-      navigation.navigate('NewPassword');
+      navigation.navigate('NewPassword', username);
     } catch (e) {
       Alert.alert('Oops', e.message);
     } finally {
