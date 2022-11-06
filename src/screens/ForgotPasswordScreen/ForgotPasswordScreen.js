@@ -16,43 +16,42 @@ const ForgotPasswordScreen = () => {
   const onSendPressed = async data => {
     // console.warn(data);
     // navigation.navigate('NewPassword');
+    const username = data.username;
     if (loading) return;
     setLoading(true);
     try {
       await Auth.forgotPassword(data.username);
-      navigation.navigate('NewPassword');
+      navigation.navigate('NewPassword', username);
     } catch (e) {
       Alert.alert('Oops', e.message);
     } finally {
       setLoading(false);
     }
   };
-  const onSignInPressed = () => {
-    navigation.navigate('SignIn');
-  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Redefinir Senha</Text>
-
-        <CustomInput
-          placeholder="Nome de usuário"
-          name="username"
-          control={control}
-          rules={{required: 'Nome de usuário necessário'}}
-        />
+        <View style={styles.inputContainer}>
+          <Text>Nome de Usuário</Text>
+          <CustomInput
+            placeholder="Digite seu nome de usuário"
+            name="username"
+            control={control}
+            rules={{required: 'Nome de usuário necessário'}}
+          />
+        </View>
 
         <CustomButton
-          text={loading ? 'Carregando...' : 'Enviar'}
+          text={loading ? 'Carregando...' : 'Submeter'}
           onPress={handleSubmit(onSendPressed)}
         />
 
-        <CustomButton
+        {/* <CustomButton
           text="Retornar para login"
           onPress={onSignInPressed}
           type="TERTIARY"
-        />
+        /> */}
       </View>
     </ScrollView>
   );
