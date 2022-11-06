@@ -16,7 +16,7 @@ const ForgotPasswordScreen = () => {
   const onSendPressed = async data => {
     // console.warn(data);
     // navigation.navigate('NewPassword');
-    const username = data;
+    const username = data.username;
     if (loading) return;
     setLoading(true);
     try {
