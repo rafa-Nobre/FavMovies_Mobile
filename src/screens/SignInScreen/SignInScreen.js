@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Image,
-  useWindowDimensions,
-  ScrollView,
-  Alert,
-} from 'react-native';
-import Logo from '../../../assets/images/user.png';
+import {View, Image, useWindowDimensions, Text, Alert} from 'react-native';
+import Logo from '../../../assets/images/logo.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import styles from './styles';
@@ -64,49 +58,66 @@ const SignInScreen = () => {
         style={[styles.logo, {height: height * 0.3}]}
         resizeMode="contain"
       />
-      <CustomInput
-        name="username"
-        placeholder="Usuário"
-        control={control}
-        rules={{
-          required: 'Nome de usuário necessário',
-          minLength: {
-            value: 5,
-            message: 'Mínimo 5 e máximo de 20 caracteres',
-          },
-          maxLength: 20,
-        }}
-      />
-      <CustomInput
-        name="password"
-        placeholder="Senha"
-        control={control}
-        secureTextEntry={true}
-        rules={{
-          required: 'Senha necessária',
-          minLength: {
-            value: 8,
-            message: 'Senha deve ter de 8-16 caracteres',
-          },
-          maxLength: 16,
-        }}
-      />
+
+      <View style={styles.inputContainer}>
+        <Text>Nome de Usuário</Text>
+        <CustomInput
+          name="username"
+          placeholder="Usuário"
+          control={control}
+          rules={{
+            required: 'Nome de usuário necessário',
+            minLength: {
+              value: 5,
+              message: 'Mínimo 5 e máximo de 20 caracteres',
+            },
+            maxLength: 20,
+          }}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text>Senha</Text>
+        <CustomInput
+          name="password"
+          placeholder="Senha"
+          control={control}
+          secureTextEntry={true}
+          rules={{
+            required: 'Senha necessária',
+            minLength: {
+              value: 8,
+              message: 'Senha deve ter de 8-16 caracteres',
+            },
+            maxLength: 16,
+          }}
+        />
+      </View>
 
       <CustomButton
         text={loading ? 'Carregando...' : 'Entrar'}
         onPress={handleSubmit(onSignInPressed)}
       />
-      <CustomButton
+      {/* <CustomButton
         text="Esqueceu sua senha?"
         onPress={onForgotPasswordPressed}
         type="TERTIARY"
-      />
+      /> */}
 
       <CustomButton
         text="Cadastrar"
         onPress={onSignUpPressed}
-        type="TERTIARY"
+        type="SECONDARY"
       />
+
+      <View style={{marginTop: 90}}>
+        <Text style={styles.text} onPress={onForgotPasswordPressed}>
+          Esqueceu sua senha?
+        </Text>
+        <Text style={styles.text} onPress={onTermsOfUsePressed}>
+          Termos de Uso
+        </Text>
+      </View>
     </View>
   );
 };

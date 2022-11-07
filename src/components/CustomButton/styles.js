@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3393ED',
   },
   container_SECONDARY: {
-    borderColor: '#3B71F3',
+    borderColor: '#3393ED',
     borderWidth: 2,
   },
   container_TETIARY: {},
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   text_SECONDARY: {
-    color: '#3B71F3',
+    color: '#3393ED',
   },
   text_TERTIARY: {
     color: 'gray',
