@@ -59,11 +59,13 @@ const SignInScreen = () => {
         resizeMode="contain"
       />
 
+      <Text style={styles.textLogo}>Bem-vindo ao FavMovies</Text>
+
       <View style={styles.inputContainer}>
         <Text>Nome de Usuário</Text>
         <CustomInput
           name="username"
-          placeholder="Usuário"
+          placeholder="Digite seu nome de usuário"
           control={control}
           rules={{
             required: 'Nome de usuário necessário',
@@ -80,7 +82,7 @@ const SignInScreen = () => {
         <Text>Senha</Text>
         <CustomInput
           name="password"
-          placeholder="Senha"
+          placeholder="Digite sua senha"
           control={control}
           secureTextEntry={true}
           rules={{
@@ -110,7 +112,7 @@ const SignInScreen = () => {
         type="SECONDARY"
       />
 
-      <View style={{marginTop: 90}}>
+      <View style={{marginTop: 40}}>
         <Text style={styles.text} onPress={onForgotPasswordPressed}>
           Esqueceu sua senha?
         </Text>

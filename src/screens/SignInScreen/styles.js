@@ -10,17 +10,25 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 300,
     maxHeight: 150,
-    marginBottom: 50,
+    marginBottom: 25,
   },
   inputContainer: {
     width: '100%',
     justifyContent: 'flex-start',
-    marginBottom: 25,
+    marginBottom: 22,
   },
   text: {
     color: '#3393ED',
+    fontSize: 17,
     fontWeight: 'bold',
     paddingBottom: 15,
+  },
+  textLogo: {
+    color: '#111111',
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 45,
+    alignSelf: 'center',
   },
 });
 
