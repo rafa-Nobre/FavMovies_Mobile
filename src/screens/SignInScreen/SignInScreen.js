@@ -13,7 +13,7 @@ const SignInScreen = () => {
 
   const navigation = useNavigation();
 
-  const {control, handleSubmit, watch} = useForm();
+  const {control, handleSubmit} = useForm();
   const [loading, setLoading] = useState(false);
 
   const onSignInPressed = async data => {
@@ -22,13 +22,13 @@ const SignInScreen = () => {
 
     try {
       console.log(
-        'SignInScreen ~ onSignInPressed ~ 32 ~ username, password',
+        'SignInScreen ~ onSignInPressed ~ 25 ~ username, password: ',
         data.username,
         data.password,
       );
       const response = await Auth.signIn(data.username, data.password);
 
-      console.log('SignInScreen ~ onSignInPressed ~ 40 ~ response', response);
+      console.log('SignInScreen ~ onSignInPressed ~ 31 ~ response', response);
     } catch (e) {
       Alert.alert('Oops', e.message);
     } finally {
