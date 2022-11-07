@@ -17,11 +17,9 @@ const SignInScreen = () => {
   const [loading, setLoading] = useState(false);
 
   const onSignInPressed = async data => {
-    // const usernameValue = watch('username');
-    // console.log(data);
     if (loading) return;
-
     setLoading(true);
+
     try {
       console.log(
         'SignInScreen ~ onSignInPressed ~ 32 ~ username, password',
@@ -30,7 +28,6 @@ const SignInScreen = () => {
       );
       const response = await Auth.signIn(data.username, data.password);
 
-      console.warn('Login bem sucedido!');
       console.log('SignInScreen ~ onSignInPressed ~ 40 ~ response', response);
     } catch (e) {
       Alert.alert('Oops', e.message);
@@ -39,11 +36,9 @@ const SignInScreen = () => {
     }
   };
   const onForgotPasswordPressed = () => {
-    //console.warn('Esqueceu!!');
     navigation.navigate('ForgotPassword');
   };
   const onSignUpPressed = () => {
-    //console.warn('Cadastro!!');
     navigation.navigate('SignUp');
   };
 
@@ -100,11 +95,6 @@ const SignInScreen = () => {
         text={loading ? 'Carregando...' : 'Entrar'}
         onPress={handleSubmit(onSignInPressed)}
       />
-      {/* <CustomButton
-        text="Esqueceu sua senha?"
-        onPress={onForgotPasswordPressed}
-        type="TERTIARY"
-      /> */}
 
       <CustomButton
         text="Cadastrar"
