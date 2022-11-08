@@ -2,8 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {Auth} from 'aws-amplify';
 
-const HomeScreen = ({route, navigation}) => {
-  //const data = route.params;
+const HomeScreen = () => {
   const signOut = () => {
     Auth.signOut();
   };

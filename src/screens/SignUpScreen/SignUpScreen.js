@@ -122,13 +122,6 @@ const SignUpScreen = () => {
           text={loading ? 'Carregando...' : 'Cadastrar'}
           onPress={handleSubmit(onRegisterPressed)}
         />
-
-        {/* <Text style={styles.text}>
-          Ao registrar, você confirma que aceitou nossos{' '}
-          <Text style={styles.link} onPress={onTermsOfUsePressed}>
-            Termos de Uso
-          </Text>
-        </Text> */}
       </View>
     </ScrollView>
   );
