@@ -3,11 +3,6 @@ import {View, Text} from 'react-native';
 import {Auth} from 'aws-amplify';
 
 const HomeScreen = () => {
-  // const getUsername = async user => {
-  //   const response = await Auth.userAttributes(user.username);
-  //   console.log('HomeScreen ~ 8 ~ attributes: ', response);
-  // };
-
   const signOut = () => {
     Auth.signOut();
   };
