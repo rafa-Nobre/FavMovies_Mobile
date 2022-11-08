@@ -1,15 +1,23 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {Auth} from 'aws-amplify';
 
-const HomeScreen = ({route, navigation}) => {
+const HomeScreen = () => {
+  const getUsername = async user => {
+    try {
+      const response = await Auth.userAttributes(user.username);
+      console.log('HomeScreen ~ getUsername ~ 9 ~ response: ', response);
+    } catch (e) {
+      Alert.alert('Oops', e.message);
+    }
+  };
   //const data = route.params;
   const signOut = () => {
     Auth.signOut();
   };
   return (
     <View>
-      <Text style={{fontSize: 24, alignSelf: 'center'}}>Tela Home</Text>
+      <Text style={{fontSize: 24, alignSelf: 'center'}}>Bem vindo</Text>
       <Text
         onPress={signOut}
         style={{
