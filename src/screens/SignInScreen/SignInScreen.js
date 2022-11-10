@@ -27,11 +27,6 @@ const SignInScreen = () => {
         data.password,
       );
       const response = await Auth.signIn(data.username, data.password);
-      // if (data.username != 'denysrafa' && data.password != '12345678') {
-      //   throw new Error('Ops! User inválido');
-      // }
-
-      //console.warn('Login bem sucedido!');
       console.log('SignInScreen ~ onSignInPressed ~ 40 ~ response', response);
     } catch (e) {
       Alert.alert(e.message);
