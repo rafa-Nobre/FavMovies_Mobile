@@ -12,7 +12,10 @@ import ConfirmEmailScreen from '../screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import NewPasswordScreen from '../screens/NewPasswordScreen';
 import HomeScreen from '../screens/HomeScreen';
-import TermsScreen from '../screens/TermsScreen/TermsScreen';
+import TermsScreen from '../screens/TermsScreen';
+import FavoriteScreen from '../screens/FavoriteScreen/FavoriteScreen';
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
+import OptionScreen from '../screens/OptionScreen/OptionScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -65,12 +68,36 @@ const Routes = () => {
             }}
           />
           <Tab.Screen
-            name="TermsExample"
-            component={TermsScreen}
+            name="Favorite"
+            component={FavoriteScreen}
             options={{
-              tabBarLabel: 'Test',
+              tabBarLabel: 'Favoritos',
               tabBarIcon: ({color, size}) => (
-                <MaterialCommunityIcons name="bell" color={color} size={size} />
+                <MaterialCommunityIcons name="star" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              tabBarLabel: 'Perfil',
+              tabBarIcon: ({color, size}) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={size}
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={OptionScreen}
+            options={{
+              tabBarLabel: 'Opções',
+              tabBarIcon: ({color, size}) => (
+                <MaterialCommunityIcons name="cog" color={color} size={size} />
               ),
             }}
           />
