@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Image,
-  useWindowDimensions,
-  ScrollView,
-  Alert,
-} from 'react-native';
+import {View, Image, useWindowDimensions, Alert} from 'react-native';
 import Logo from '../../../assets/images/user.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -19,12 +13,10 @@ const SignInScreen = () => {
 
   const navigation = useNavigation();
 
-  const {control, handleSubmit, watch} = useForm();
+  const {control, handleSubmit} = useForm();
   const [loading, setLoading] = useState(false);
 
   const onSignInPressed = async data => {
-    // const usernameValue = watch('username');
-    // console.log(data);
     if (loading) return;
 
     setLoading(true);
