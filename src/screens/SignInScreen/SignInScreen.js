@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Image, useWindowDimensions, Alert} from 'react-native';
-import Logo from '../../../assets/images/user.png';
+import Logo from '../../../assets/images/logo.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import styles from './styles';
