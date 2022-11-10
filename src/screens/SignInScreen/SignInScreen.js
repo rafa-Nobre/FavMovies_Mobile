@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image, useWindowDimensions, Alert} from 'react-native';
+import {View, Image, useWindowDimensions, Text, Alert} from 'react-native';
 import Logo from '../../../assets/images/logo.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -27,7 +27,7 @@ const SignInScreen = () => {
         data.password,
       );
       const response = await Auth.signIn(data.username, data.password);
-      console.log('SignInScreen ~ onSignInPressed ~ 40 ~ response', response);
+      console.log('SignInScreen ~ onSignInPressed ~ 31 ~ response', response);
     } catch (e) {
       Alert.alert(e.message);
     } finally {
