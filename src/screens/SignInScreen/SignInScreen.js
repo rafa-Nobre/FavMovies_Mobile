@@ -27,6 +27,7 @@ const SignInScreen = () => {
         data.password,
       );
       const response = await Auth.signIn(data.username, data.password);
+
       console.log('SignInScreen ~ onSignInPressed ~ 31 ~ response', response);
     } catch (e) {
       Alert.alert(e.message);
