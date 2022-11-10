@@ -35,11 +35,9 @@ const SignInScreen = () => {
     }
   };
   const onForgotPasswordPressed = () => {
-    //console.warn('Esqueceu!!');
     navigation.navigate('ForgotPassword');
   };
   const onSignUpPressed = () => {
-    //console.warn('Cadastro!!');
     navigation.navigate('SignUp');
   };
 
