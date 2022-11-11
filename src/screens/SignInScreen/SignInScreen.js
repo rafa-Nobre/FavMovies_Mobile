@@ -30,7 +30,7 @@ const SignInScreen = () => {
 
       console.log('SignInScreen ~ onSignInPressed ~ 31 ~ response', response);
     } catch (e) {
-      Alert.alert('Oops', e.message);
+      Alert.alert(e.message);
     } finally {
       setLoading(false);
     }

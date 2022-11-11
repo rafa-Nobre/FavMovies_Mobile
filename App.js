@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
 import Routes from './src/routes';
 import {Amplify} from 'aws-amplify';
 import config from './src/aws-exports';
