@@ -25,9 +25,7 @@ const HomeScreen = () => {
         onIconPress={query => setTerm(query.target.value)}
         value={term}
       />
-      <View>
-        <MovieListing />
-      </View>
+      <MovieListing />
     </View>
   );
 };

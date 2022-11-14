@@ -41,9 +41,8 @@ const MovieListing = () => {
         <Text style={{color: 'white', fontSize: 22}}>Filmes</Text>
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
-            data={movies}
-            keyExtractor={item => item.id.toString()}
-            renderItem={renderMovies}
+            data={movies.Search}
+            renderItem={({item}) => <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
@@ -53,9 +52,8 @@ const MovieListing = () => {
         <Text style={{color: 'white', fontSize: 22}}>Séries</Text>
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
-            data={shows}
-            keyExtractor={item => item.id.toString()}
-            renderItem={renderShows}
+            data={shows.Search}
+            renderItem={({item}) => <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
