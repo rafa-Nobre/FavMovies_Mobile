@@ -13,23 +13,18 @@ const MovieListing = () => {
     console.log(movies);
   }, []);
 
-  let renderMovies,
-    renderShows = '';
-
-  renderMovies =
+  const renderMovies = ({item}) =>
     movies.Response === 'True' ? (
-      movies.Search.map((movie, index) => (
-        <MovieCard key={index} data={movie} />
-      ))
+      <MovieCard data={item} />
     ) : (
       <View>
         <Text>{movies.Error}</Text>
       </View>
     );
 
-  renderShows =
+  const renderShows = ({item}) =>
     shows.Response === 'True' ? (
-      shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
+      <MovieCard data={item} />
     ) : (
       <View>
         <Text>{shows.Error}</Text>
@@ -42,7 +37,7 @@ const MovieListing = () => {
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
             data={movies.Search}
-            renderItem={({item}) => <MovieCard data={item} />}
+            renderItem={renderMovies}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
@@ -53,7 +48,7 @@ const MovieListing = () => {
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
             data={shows.Search}
-            renderItem={({item}) => <MovieCard data={item} />}
+            renderItem={renderShows}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
