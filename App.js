@@ -1,6 +1,8 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
 import Routes from './src/routes';
+
 import {Amplify} from 'aws-amplify';
 import config from './src/aws-exports';
 
@@ -8,17 +10,10 @@ Amplify.configure(config);
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.root}>
+    <Provider store={store}>
       <Routes />
-    </SafeAreaView>
+    </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: '#0f171e',
-  },
-});
 
 export default App;

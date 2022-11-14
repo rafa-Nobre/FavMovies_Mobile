@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {View} from 'react-native';
 import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {

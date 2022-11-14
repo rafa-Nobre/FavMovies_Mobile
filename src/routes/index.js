@@ -61,7 +61,7 @@ const Routes = () => {
             name="Home"
             component={HomeScreen}
             options={{
-              tabBarLabel: 'Início',
+              tabBarLabel: `Início`,
               tabBarIcon: ({color, size}) => (
                 <MaterialCommunityIcons name="home" color={color} size={size} />
               ),
