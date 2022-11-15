@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {Searchbar} from 'react-native-paper';
+import {fetchAsyncMovies, fetchAsyncShows} from '../../redux/movieSlice';
 
 const SearchBar = () => {
   const [term, setTerm] = useState('');
