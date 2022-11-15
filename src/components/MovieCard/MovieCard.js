@@ -1,9 +1,12 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import { ScreenStackHeaderLeftView } from 'react-native-screens';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const MovieCard = props => {
   const {data} = props;
+  const [fav, setFav ]= React.useState(false);
+
   return (
     <View style={{marginVertical: 12}}>
       <View style={{flexDirection: 'row', flex: 1}}>
@@ -31,12 +34,12 @@ const MovieCard = props => {
           {/*Fav Button*/}
           <View style={{marginTop: 14}}>
             <TouchableOpacity
-              onPress={() => console.log('Favoritado!')}
+              onPress={() => setFav(!fav)}
               activeOpacity={0.7}
               style={{
                 flexDirection: 'row',
                 padding: 2,
-                backgroundColor: '#2D3038',
+                backgroundColor: fav ? '#fded00' : '#2D3038',
                 borderRadius: 20,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -45,7 +48,7 @@ const MovieCard = props => {
               }}>
               <MaterialCommunityIcons
                 name="star-outline"
-                color="#64676D"
+                color={ fav ? '#dacb0f' :"#64676D"}
                 size={24}
               />
             </TouchableOpacity>
