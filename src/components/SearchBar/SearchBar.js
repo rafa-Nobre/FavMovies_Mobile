@@ -9,16 +9,23 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const onChangeSearch = query => {
     setTerm(query);
-    if (term === '') return alert('Please type an valid entry!');
-    dispatch(fetchAsyncMovies(term));
-    dispatch(fetchAsyncShows(term));
+    console.log(query);
   };
+  const submitHandler = e => {
+    e.preventDefault()
+    if (term === '') return alert('Por favor, digite uma pesquisa válida')
+    dispatch(fetchAsyncMovies(term))
+    dispatch(fetchAsyncShows(term))
+    setTerm('')
+    console.log('pesquisa',term);
+  }
 
   return (
-    <View style={{flex: 1, width: '100%'}}>
+    <View style={{flex: 1, width: '100%', maxHeight: 50}}>
       <Searchbar
         placeholder="Pesquisar filme ou série"
         onChangeText={onChangeSearch}
+        onIconPress={submitHandler}
         value={term}
       />
     </View>

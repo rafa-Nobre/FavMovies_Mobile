@@ -39,7 +39,8 @@ const MovieListing = () => {
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
             data={movies.Search}
-            renderItem={renderMovies}
+            renderItem={({item}) => 
+                <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
@@ -50,7 +51,8 @@ const MovieListing = () => {
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
             data={shows.Search}
-            renderItem={renderShows}
+            renderItem={({item}) => 
+              <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
