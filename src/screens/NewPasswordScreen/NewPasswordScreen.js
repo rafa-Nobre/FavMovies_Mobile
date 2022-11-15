@@ -79,7 +79,10 @@ const NewPasswordScreen = () => {
           />
         </View>
 
-        <CustomButton text="Submeter" onPress={handleSubmit(onSubmitPressed)} />
+        <CustomButton
+          text={loading ? 'Carregando...' : 'Submeter'}
+          onPress={handleSubmit(onSubmitPressed)}
+        />
 
         {/* <CustomButton
           text="Retornar para login"

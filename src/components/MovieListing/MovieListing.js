@@ -1,46 +1,64 @@
-import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
-import {getAllMovies, getAllShows} from '../../features/movies/movieSlice';
+import {getAllMovies, getAllShows} from '../../redux/movieSlice';
 import MovieCard from '../MovieCard/MovieCard';
-import './MovieListing.scss';
 import styles from './styles';
 
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
-  let renderMovies,
-    renderShows = '';
-  renderMovies =
+
+  useEffect(() => {
+    console.log(movies);
+  }, []);
+
+  const renderMovies = ({item}) => {
     movies.Response === 'True' ? (
-      movies.Search.map((movie, index) => (
-        <MovieCard key={index} data={movie} />
-      ))
+      <MovieCard data={item} />
     ) : (
-      <View className="movies-error">
+      <View>
         <Text>{movies.Error}</Text>
       </View>
     );
-
-  renderShows =
+  };
+  const renderShows = ({item}) => {
     shows.Response === 'True' ? (
-      shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
+      <MovieCard data={item} />
     ) : (
-      <View className="shows-error">
+      <View>
         <Text>{shows.Error}</Text>
       </View>
     );
+  };
+
   return (
-    <ScrollView>
-      <View className="movie-list">
-        <Text style={styles.title}>Movies</Text>
-        <View className="movie-container">{renderMovies}</View>
+    <View style={{flex: 1, backgroundColor: '#1E1B26'}}>
+      <View style={{flex: 1, paddingHorizontal: 16}}>
+        <Text style={{color: 'white', fontSize: 22}}>Filmes</Text>
+        <View style={{flex: 1, marginTop: 8}}>
+          <FlatList
+            data={movies.Search}
+            renderItem={({item}) => 
+                <MovieCard data={item} />}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+          />
+        </View>
       </View>
-      <View className="show-list">
-        <Text style={styles.title}>Series</Text>
-        <View className="movie-container">{renderShows}</View>
+      <View style={{flex: 1, paddingHorizontal: 16}}>
+        <Text style={{color: 'white', fontSize: 22}}>Séries</Text>
+        <View style={{flex: 1, marginTop: 8}}>
+          <FlatList
+            data={shows.Search}
+            renderItem={({item}) => 
+              <MovieCard data={item} />}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+          />
+        </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

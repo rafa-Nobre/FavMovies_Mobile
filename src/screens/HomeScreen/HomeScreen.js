@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
-//import MaterialBottomNavigator from '../../components/BottomTab/MaterialBottomNavigator';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import {useDispatch} from 'react-redux';
+import {fetchAsyncMovies, fetchAsyncShows} from '../../redux/movieSlice';
+import MovieListing from '../../components/MovieListing/MovieListing';
 
 const HomeScreen = () => {
-  const signOut = () => {
-    Auth.signOut();
-  };
+  const dispatch = useDispatch();
+  const movieText = 'Time';
+  const showText = 'Friends';
+  useEffect(() => {
+    dispatch(fetchAsyncMovies(movieText));
+    dispatch(fetchAsyncShows(showText));
+  }, [dispatch]);
+
   return (
-    <View>
+    <View style={{flex: 1, width: '100%'}}>
       <Text style={{fontSize: 24, alignSelf: 'center'}}>Bem vindo</Text>
+      <SearchBar />
+      <MovieListing />
     </View>
   );
 };
