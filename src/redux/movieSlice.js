@@ -34,6 +34,8 @@ const initialState = {
   movies: {},
   shows: {},
   itemSelected: {},
+  favMovies: {},
+  favShows: {},
 };
 
 const movieSlice = createSlice({
@@ -42,6 +44,14 @@ const movieSlice = createSlice({
   reducers: {
     removeSelectedItem: state => {
       state.itemSelected = {};
+    },
+    addFavMovies: (state, {payload}) => {
+      console.log('Filme Adicionado!');
+      return {...state, favMovies: [...state.favMovies, payload]};
+    },
+    addFavShows: (state, {payload}) => {
+      console.log('Série Adicionada!');
+      return {...state, favShows: [...state.favShows, payload]};
     },
   },
   extraReducers: {
@@ -68,6 +78,8 @@ const movieSlice = createSlice({
 
 //Exportando os estados salvos nas variáveis para serem usadas nos hooks
 export const {removeSelectedItem} = movieSlice.actions;
+export const {addFavMovies} = movieSlice.actions;
+export const {addFavShows} = movieSlice.actions;
 export const getAllMovies = state => state.movies.movies;
 export const getAllShows = state => state.movies.shows;
 export const getSelectedItemDetail = state => state.movies.itemSelected;
