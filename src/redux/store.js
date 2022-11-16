@@ -11,7 +11,7 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: {
-    movies: persistReducer(moviesReducer, persistConfig),
+    movies: persistReducer(persistConfig, moviesReducer),
   },
 });
 export const persistor = persistStore(store);
