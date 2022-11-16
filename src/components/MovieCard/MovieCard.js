@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import { ScreenStackHeaderLeftView } from 'react-native-screens';
+import {ScreenStackHeaderLeftView} from 'react-native-screens';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const MovieCard = props => {
   const {data} = props;
-  const [fav, setFav ]= React.useState(false);
+  const [fav, setFav] = React.useState(false);
 
   return (
     <View style={{marginVertical: 12}}>
@@ -39,7 +39,7 @@ const MovieCard = props => {
               style={{
                 flexDirection: 'row',
                 padding: 2,
-                backgroundColor: fav ? '#fded00' : '#2D3038',
+                backgroundColor: fav ? '#3393ED' : '#ed8d33',
                 borderRadius: 20,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -48,7 +48,7 @@ const MovieCard = props => {
               }}>
               <MaterialCommunityIcons
                 name="star-outline"
-                color={ fav ? '#dacb0f' :"#64676D"}
+                color={fav ? '#dacb0f' : '#64676D'}
                 size={24}
               />
             </TouchableOpacity>

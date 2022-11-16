@@ -33,14 +33,13 @@ const MovieListing = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: '#1E1B26'}}>
+    <View style={{flex: 1, backgroundColor: '#ED8D33'}}>
       <View style={{flex: 1, paddingHorizontal: 16}}>
         <Text style={{color: 'white', fontSize: 22}}>Filmes</Text>
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
             data={movies.Search}
-            renderItem={({item}) => 
-                <MovieCard data={item} />}
+            renderItem={({item}) => <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
@@ -51,8 +50,7 @@ const MovieListing = () => {
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
             data={shows.Search}
-            renderItem={({item}) => 
-              <MovieCard data={item} />}
+            renderItem={({item}) => <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
           />
