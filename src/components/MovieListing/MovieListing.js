@@ -17,27 +17,7 @@ import styles from './styles';
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
-  const dispatch = useDispatch();
-
-  //Dispatchers
-  const addToFavMovies = movie => dispatch(addFavMovies(movie));
-  const addToFavShows = show => dispatch(addFavShows(show));
-  const removeFromFavMovies = movie => dispatch(removeFavMovie(movie));
-  const removeFromFavShows = show => dispatch(removeFavShow(show));
-
-  //Handlers
-  const handleAddFavMovie = movie => {
-    addToFavMovies(movie);
-  };
-  const handleAddFavShow = show => {
-    addToFavShows(show);
-  };
-  const handleRemoveFavMovie = movie => {
-    removeFromFavMovies(movie);
-  };
-  const handleRemoveFavShow = show => {
-    removeFromFavShows(show);
-  };
+  
 
   // const renderMovies = ({item}) => {
   //   movies.Response === 'True' ? (

@@ -1,11 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {ScreenStackHeaderLeftView} from 'react-native-screens';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  getAllMovies,
+  getAllShows,
+  addFavMovies,
+  addFavShows,
+  removeFavMovie,
+  removeFavShow,
+  getFavMovies,
+  getFavShows,
+} from '../../redux/movieSlice';
 
 const MovieCard = props => {
   const {data} = props;
   const [fav, setFav] = React.useState(false);
+
+  const dispatch = useDispatch();
+
+  //Dispatchers
+  const addToFavMovies = movie => dispatch(addFavMovies(movie));
+  const addToFavShows = show => dispatch(addFavShows(show));
+  const removeFromFavMovies = movie => dispatch(removeFavMovie(movie));
+  const removeFromFavShows = show => dispatch(removeFavShow(show));
+
+  //Handlers
+  const handleAddFavMovie = movie => {
+    console.log('MovieCard ~ handleAddFavMovie ~ 31')
+    addToFavMovies(movie);
+  };
+  const handleAddFavShow = show => {
+    addToFavShows(show);
+  };
+  const handleRemoveFavMovie = movie => {
+    removeFromFavMovies(movie);
+  };
+  const handleRemoveFavShow = show => {
+    removeFromFavShows(show);
+  };
+
+  useEffect(()=>{
+    if(fav) handleAddFavMovie(data)
+  },[fav])
 
   return (
     <View style={{marginVertical: 12}}>
