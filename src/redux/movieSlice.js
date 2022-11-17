@@ -47,11 +47,27 @@ const movieSlice = createSlice({
     },
     addFavMovies: (state, {payload}) => {
       console.log('Filme Adicionado!');
-      return {...state, favMovies: [...state.favMovies, payload]};
+      return {...state, favMovies: {...state.favMovies, payload}};
     },
     addFavShows: (state, {payload}) => {
       console.log('Série Adicionada!');
-      return {...state, favShows: [...state.favShows, payload]};
+      return {...state, favShows: {...state.favShows, payload}};
+    },
+    removeFavMovie: (state, {payload}) => {
+      return {
+        ...state,
+        favMovies: state.favMovies.filter(function (movies) {
+          return movies.id !== payload.id;
+        }),
+      };
+    },
+    removeFavShow: (state, {payload}) => {
+      return {
+        ...state,
+        favShows: state.favShows.filter(function (shows) {
+          return shows.id !== payload.id;
+        }),
+      };
     },
   },
   extraReducers: {
@@ -80,7 +96,11 @@ const movieSlice = createSlice({
 export const {removeSelectedItem} = movieSlice.actions;
 export const {addFavMovies} = movieSlice.actions;
 export const {addFavShows} = movieSlice.actions;
+export const {removeFavMovie} = movieSlice.actions;
+export const {removeFavShow} = movieSlice.actions;
 export const getAllMovies = state => state.movies.movies;
 export const getAllShows = state => state.movies.shows;
+export const getFavMovies = state => state.movies.favMovies;
+export const getFavShows = state => state.movies.favShows;
 export const getSelectedItemDetail = state => state.movies.itemSelected;
 export default movieSlice.reducer;

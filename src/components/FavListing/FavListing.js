@@ -2,10 +2,6 @@ import React, {useEffect} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {
-  getAllMovies,
-  getAllShows,
-  addFavMovies,
-  addFavShows,
   removeFavMovie,
   removeFavShow,
   getFavMovies,
@@ -14,29 +10,37 @@ import {
 import MovieCard from '../MovieCard/MovieCard';
 import styles from './styles';
 
-const MovieListing = () => {
-  const movies = useSelector(getAllMovies);
-  const shows = useSelector(getAllShows);
+const FavListing = () => {
+  const favMovies = useSelector(getFavMovies);
+  const favShows = useSelector(getFavShows);
   const dispatch = useDispatch();
 
   //Dispatchers
-  const addToFavMovies = movie => dispatch(addFavMovies(movie));
-  const addToFavShows = show => dispatch(addFavShows(show));
   const removeFromFavMovies = movie => dispatch(removeFavMovie(movie));
   const removeFromFavShows = show => dispatch(removeFavShow(show));
 
   //Handlers
-  const handleAddFavMovie = movie => {
-    addToFavMovies(movie);
-  };
-  const handleAddFavShow = show => {
-    addToFavShows(show);
-  };
   const handleRemoveFavMovie = movie => {
     removeFromFavMovies(movie);
   };
   const handleRemoveFavShow = show => {
     removeFromFavShows(show);
+  };
+
+  //Convertendo as entradas para um array
+  // const asArrayMovies = Object.entries(favMovies);
+  // const asArrayShows = Object.entries(favShows);
+  const ifExistsMovies = movie => {
+    if (favMovies.filter(item => item.id === movie.id).length > 0) {
+      return true;
+    }
+    return false;
+  };
+  const ifExistsShows = show => {
+    if (favShows.filter(item => item.id === show.id).length > 0) {
+      return true;
+    }
+    return false;
   };
 
   // const renderMovies = ({item}) => {
@@ -64,7 +68,7 @@ const MovieListing = () => {
         <Text style={{color: 'white', fontSize: 22}}>Filmes</Text>
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
-            data={movies.Search}
+            data={movies}
             renderItem={({item}) => <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
@@ -75,7 +79,7 @@ const MovieListing = () => {
         <Text style={{color: 'white', fontSize: 22}}>Séries</Text>
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
-            data={shows.Search}
+            data={shows}
             renderItem={({item}) => <MovieCard data={item} />}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
@@ -86,4 +90,4 @@ const MovieListing = () => {
   );
 };
 
-export default MovieListing;
+export default FavListing;
