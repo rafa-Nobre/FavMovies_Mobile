@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import {Searchbar} from 'react-native-paper';
-
-// import { Container } from './styles';
+import FavListing from '../../components/FavListing/FavListing';
 
 const FavoriteScreen = () => {
   const [term, setTerm] = useState('');
@@ -15,6 +14,7 @@ const FavoriteScreen = () => {
         onChangeText={onChangeSearch}
         value={term}
       />
+      <FavListing />
     </View>
   );
 };

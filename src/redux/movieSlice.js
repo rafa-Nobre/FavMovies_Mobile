@@ -31,11 +31,11 @@ export const fetchAsyncItemDetail = createAsyncThunk(
 );
 
 const initialState = {
-  movies: {},
-  shows: {},
-  itemSelected: {},
-  favMovies: {},
-  favShows: {},
+  movies: [],
+  shows: [],
+  itemSelected: [],
+  favMovies: [],
+  favShows: [],
 };
 
 const movieSlice = createSlice({
@@ -43,30 +43,26 @@ const movieSlice = createSlice({
   initialState,
   reducers: {
     removeSelectedItem: state => {
-      state.itemSelected = {};
+      state.itemSelected = [];
     },
     addFavMovies: (state, {payload}) => {
       console.log('Filme Adicionado!');
-      return {...state, favMovies: {...state.favMovies, payload}};
+      return {...state, favMovies: [...state.favMovies, payload]};
     },
     addFavShows: (state, {payload}) => {
       console.log('Série Adicionada!');
-      return {...state, favShows: {...state.favShows, payload}};
+      return {...state, favShows: [...state.favShows, payload]};
     },
     removeFavMovie: (state, {payload}) => {
       return {
         ...state,
-        favMovies: state.favMovies.filter(function (movies) {
-          return movies.id !== payload.id;
-        }),
+        favMovies: state.favMovies.filter(movies => movies.id !== payload.id),
       };
     },
     removeFavShow: (state, {payload}) => {
       return {
         ...state,
-        favShows: state.favShows.filter(function (shows) {
-          return shows.id !== payload.id;
-        }),
+        favShows: state.favShows.filter(shows => shows.id !== payload.id),
       };
     },
   },

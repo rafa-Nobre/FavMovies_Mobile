@@ -14,7 +14,7 @@ import {
   getFavShows,
 } from '../../redux/movieSlice';
 
-const MovieCard = props => {
+const ShowCard = props => {
   const {data} = props;
   //const [fav, setFav] = React.useState(false);
 
@@ -115,4 +115,4 @@ const MovieCard = props => {
   );
 };
 
-export default MovieCard;
+export default ShowCard;
