@@ -15,6 +15,12 @@ const FavListing = () => {
   const {favShows} = useSelector(getFavShows);
   const dispatch = useDispatch();
 
+  //Handlers para o tamanho do array
+  const moviesFallback = favMovies || [];
+  const showsFallback = favShows || [];
+  const getMoviesArray = moviesFallback?.length || 0;
+  const getShowsArray = showsFallback?.length || 0;
+
   //Dispatchers
   const removeFromFavMovies = movie => dispatch(removeFavMovie(movie));
   const removeFromFavShows = show => dispatch(removeFavShow(show));
@@ -146,37 +152,31 @@ const FavListing = () => {
       <View style={{flex: 1, paddingHorizontal: 16}}>
         <Text style={{color: 'white', fontSize: 22}}>Filmes</Text>
         <View style={{flex: 1, marginTop: 8}}>
-          {favMovies.length === 0 ? (
+          {getMoviesArray === 0 ? (
             <Text>Nossa que vazio!</Text>
           ) : (
-            {
-              /* Tag Flatlist aqui */
-            }
+            <FlatList
+              data={favMovies}
+              renderItem={renderMovies} //({item}) => <MovieCard data={item} />
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            />
           )}
-          <FlatList
-            data={favMovies}
-            renderItem={renderMovies} //({item}) => <MovieCard data={item} />
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-          />
         </View>
       </View>
       <View style={{flex: 1, paddingHorizontal: 16}}>
         <Text style={{color: 'white', fontSize: 22}}>Séries</Text>
         <View style={{flex: 1, marginTop: 8}}>
-          {favShows.length === 0 ? (
+          {getShowsArray === 0 ? (
             <Text>Nossa que vazio!</Text>
           ) : (
-            {
-              /* Tag Flatlist aqui */
-            }
+            <FlatList
+              data={favShows}
+              renderItem={renderShows}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            />
           )}
-          <FlatList
-            data={favShows}
-            renderItem={renderShows}
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-          />
         </View>
       </View>
     </View>

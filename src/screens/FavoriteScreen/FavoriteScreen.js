@@ -8,7 +8,7 @@ const FavoriteScreen = () => {
   const onChangeSearch = query => setTerm(query);
 
   return (
-    <View>
+    <View style={{flex: 1, width: '100%'}}>
       <Searchbar
         placeholder="Search"
         onChangeText={onChangeSearch}
