@@ -56,13 +56,15 @@ const movieSlice = createSlice({
     removeFavMovie: (state, {payload}) => {
       return {
         ...state,
-        favMovies: state.favMovies.filter(movies => movies.id !== payload.id),
+        favMovies: state.favMovies.filter(
+          movie => movie.imdbID !== payload.imdbID,
+        ),
       };
     },
     removeFavShow: (state, {payload}) => {
       return {
         ...state,
-        favShows: state.favShows.filter(shows => shows.id !== payload.id),
+        favShows: state.favShows.filter(show => show.imdbID !== payload.imdbID),
       };
     },
   },

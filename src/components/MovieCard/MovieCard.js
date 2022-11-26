@@ -18,38 +18,55 @@ const MovieCard = props => {
   const {data} = props;
   //const [fav, setFav] = React.useState(false);
 
-  const {favMovies} = useSelector(getFavMovies);
+  const favMovies = useSelector(getFavMovies);
+  const favShows = useSelector(getFavShows);
+
+  const getMoviesArray = Object.values(favMovies);
+  const getShowsArray = Object.values(favShows);
+
   const dispatch = useDispatch();
 
   //Dispatchers
   const addToFavMovies = movie => dispatch(addFavMovies(movie));
-  //const addToFavShows = show => dispatch(addFavShows(show));
+  const addToFavShows = show => dispatch(addFavShows(show));
   const removeFromFavMovies = movie => dispatch(removeFavMovie(movie));
-  //const removeFromFavShows = show => dispatch(removeFavShow(show));
+  const removeFromFavShows = show => dispatch(removeFavShow(show));
 
   //Handlers
   const handleAddFavMovie = movie => {
     console.log('MovieCard ~ handleAddFavMovie ~ 31');
     addToFavMovies(movie);
   };
-  // const handleAddFavShow = show => {
-  //   addToFavShows(show);
-  // };
+  const handleAddFavShow = show => {
+    addToFavShows(show);
+  };
   const handleRemoveFavMovie = movie => {
     removeFromFavMovies(movie);
   };
-  // const handleRemoveFavShow = show => {
-  //   removeFromFavShows(show);
-  // };
+  const handleRemoveFavShow = show => {
+    removeFromFavShows(show);
+  };
 
-  const ifExistsMovies = movie => {
-    if (favMovies.filter(item => item.id === movie.id).length > 0) {
+  const ifExistsMovie = movie => {
+    if (getMoviesArray.filter(item => item.id === movie.id).length > 0) {
       return true;
     }
     return false;
   };
-  // const ifExistsShows = show => {
-  //   if (favShows.filter(item => item.id === show.id).length > 0) {
+  const ifExistsShow = show => {
+    if (getShowsArray.filter(item => item.id === show.id).length > 0) {
+      return true;
+    }
+    return false;
+  };
+  // const ifExistsMovie = () => {
+  //   if (getMoviesArray > 0) {
+  //     return true;
+  //   }
+  //   return false;
+  // };
+  // const ifExistsShow = () => {
+  //   if (getShowsArray > 0) {
   //     return true;
   //   }
   //   return false;
@@ -86,16 +103,25 @@ const MovieCard = props => {
           {/*Fav Button*/}
           <View style={{marginTop: 14}}>
             <TouchableOpacity
-              onPress={() =>
-                ifExistsMovies(data)
-                  ? handleRemoveFavMovie(data)
-                  : handleAddFavMovie(data)
-              } //setFav(!fav)
+              onPress={() => {
+                if (data.Type == 'movie') {
+                  ifExistsMovie(data)
+                    ? handleRemoveFavMovie(data)
+                    : handleAddFavMovie(data);
+                } else {
+                  ifExistsShow(data)
+                    ? handleRemoveFavShow(data)
+                    : handleAddFavShow(data);
+                }
+              }} //setFav(!fav)
               activeOpacity={0.7}
               style={{
                 flexDirection: 'row',
                 padding: 2,
-                backgroundColor: ifExistsMovies(data) ? '#ed8d33' : '#3393ED',
+                backgroundColor:
+                  ifExistsMovie(data) || ifExistsShow(data)
+                    ? '#3393ED'
+                    : '#ed8d33',
                 borderRadius: 20,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -103,8 +129,16 @@ const MovieCard = props => {
                 width: 40,
               }}>
               <MaterialCommunityIcons
-                name={ifExistsMovies(data) ? 'star-outline' : 'star'}
-                color={ifExistsMovies(data) ? 'white' : '#64676D'}
+                name={
+                  ifExistsMovie(data) || ifExistsShow(data)
+                    ? 'star-outline'
+                    : 'star'
+                }
+                color={
+                  ifExistsMovie(data) || ifExistsShow(data)
+                    ? 'white'
+                    : '#64676D'
+                }
                 size={24}
               />
             </TouchableOpacity>
