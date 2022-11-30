@@ -17,14 +17,14 @@ import styles from './styles';
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
-  const favMovies = useSelector(getFavMovies);
+  //const favMovies = useSelector(getFavMovies);
   // const {favShows} = useSelector(getFavShows);
 
   useEffect(() => {
     console.log('24 / movies: ', movies);
     console.log('25 / shows: ', shows);
-    console.log('26 / favMovies: ', favMovies);
-  }, [movies, shows, favMovies]);
+    //console.log('26 / favMovies: ', favMovies);
+  }, [movies, shows]);
 
   //Dispatchers
   // const dispatch = useDispatch();
@@ -192,7 +192,6 @@ const MovieListing = () => {
             renderItem={({item}) => <MovieCard data={item} />} //({item}) => <MovieCard data={item} />
             showsHorizontalScrollIndicator={false}
             horizontal={true}
-            style={{flex: 1, width: 100}}
           />
         </View>
       </View>

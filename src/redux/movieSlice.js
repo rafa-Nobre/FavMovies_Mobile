@@ -47,19 +47,31 @@ const movieSlice = createSlice({
     },
     addFavMovies: (state, {payload}) => {
       console.log('Filme Adicionado!');
-      return {...state, favMovies: [...state.favMovies, payload]};
+      console.log('movieSlice ~ addFavMovies ~ 50 ~ state.favMovies', state.favMovies);
+      console.log('movieSlice ~ addFavMovies ~ 51 ~ payload', payload);
+      state.favMovies.push(payload);
+      console.log('movieSlice ~ addFavMovies ~ 53 ~ state.favMovies', state.favMovies);
+      return state;
     },
     addFavShows: (state, {payload}) => {
       console.log('Série Adicionada!');
-      return {...state, favShows: [...state.favShows, payload]};
+      console.log('movieSlice ~ addFavShows ~ 54 ~ state.favShows', state.favShows);
+      console.log('movieSlice ~ addFavShows ~ 55 ~ payload', payload);
+      state.favShows.push(payload);
+      console.log('movieSlice ~ addFavShows ~ 57 ~ state.favShows', state.favShows);
+      return state;
     },
     removeFavMovie: (state, {payload}) => {
-      return {
-        ...state,
+      let updatedState = {
+        movies: state.movies,
+        shows: state.shows,
+        itemSelected: state.itemSelected,
         favMovies: state.favMovies.filter(
           movie => movie.imdbID !== payload.imdbID,
         ),
-      };
+        favShows: state.favShows,
+      }
+      return updatedState;
     },
     removeFavShow: (state, {payload}) => {
       return {

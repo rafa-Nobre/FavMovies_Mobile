@@ -34,10 +34,11 @@ const MovieCard = props => {
 
   //Handlers
   const handleAddFavMovie = movie => {
-    console.log('MovieCard ~ handleAddFavMovie ~ 31');
+    console.log('MovieCard ~ handleAddFavMovie ~ 37');
     addToFavMovies(movie);
   };
   const handleAddFavShow = show => {
+    console.log('MovieCard ~ handleAddFavShow ~ 41');
     addToFavShows(show);
   };
   const handleRemoveFavMovie = movie => {
@@ -48,13 +49,15 @@ const MovieCard = props => {
   };
 
   const ifExistsMovie = movie => {
-    if (getMoviesArray.filter(item => item.id === movie.id).length > 0) {
+    
+    if (getMoviesArray.filter(item => item?.imdbID === movie?.imdbID).length > 0) {
       return true;
     }
     return false;
   };
   const ifExistsShow = show => {
-    if (getShowsArray.filter(item => item.id === show.id).length > 0) {
+    
+    if (getShowsArray.filter(item => item?.imdbID === show?.imdbID).length > 0) {
       return true;
     }
     return false;

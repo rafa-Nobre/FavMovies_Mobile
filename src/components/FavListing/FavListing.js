@@ -16,6 +16,8 @@ const FavListing = () => {
   const favShows = useSelector(getFavShows);
   //const dispatch = useDispatch();
 
+  useEffect(()=>{console.log('FavListing ~ 19 ~ favMovies',favMovies)},[favMovies])
+
   //Handlers para o tamanho do array
   const moviesFallback = favMovies || [];
   const showsFallback = favShows || [];
@@ -157,7 +159,7 @@ const FavListing = () => {
             <Text>Nossa que vazio!</Text>
           ) : (
             <FlatList
-              data={favMovies.Search}
+              data={favMovies}
               renderItem={({item}) => <MovieCard data={item} />}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
@@ -172,7 +174,7 @@ const FavListing = () => {
             <Text>Nossa que vazio!</Text>
           ) : (
             <FlatList
-              data={favShows.Search}
+              data={favShows}
               renderItem={({item}) => <MovieCard data={item} />}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
