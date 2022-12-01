@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {Searchbar} from 'react-native-paper';
 import FavListing from '../../components/FavListing/FavListing';
 

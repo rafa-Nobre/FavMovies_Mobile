@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import styles from './styles';
 
 const ProfileScreen = () => {
   return (
-    <View>
-      <Text style={{fontSize: 24, alignSelf: 'center'}}>Perfil do usuário</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>Perfil do usuário</Text>
     </View>
   );
 };

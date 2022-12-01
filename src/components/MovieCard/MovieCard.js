@@ -1,11 +1,8 @@
 import React, {useEffect} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import {ScreenStackHeaderLeftView} from 'react-native-screens';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector, useDispatch} from 'react-redux';
 import {
-  getAllMovies,
-  getAllShows,
   addFavMovies,
   addFavShows,
   removeFavMovie,
@@ -16,7 +13,6 @@ import {
 
 const MovieCard = props => {
   const {data} = props;
-  //const [fav, setFav] = React.useState(false);
 
   const favMovies = useSelector(getFavMovies);
   const favShows = useSelector(getFavShows);
@@ -24,9 +20,8 @@ const MovieCard = props => {
   const getMoviesArray = Object.values(favMovies);
   const getShowsArray = Object.values(favShows);
 
-  const dispatch = useDispatch();
-
   //Dispatchers
+  const dispatch = useDispatch();
   const addToFavMovies = movie => dispatch(addFavMovies(movie));
   const addToFavShows = show => dispatch(addFavShows(show));
   const removeFromFavMovies = movie => dispatch(removeFavMovie(movie));
@@ -48,36 +43,23 @@ const MovieCard = props => {
     removeFromFavShows(show);
   };
 
+  //Verificando o array de filmes e séries
   const ifExistsMovie = movie => {
-    
-    if (getMoviesArray.filter(item => item?.imdbID === movie?.imdbID).length > 0) {
+    if (
+      getMoviesArray.filter(item => item?.imdbID === movie?.imdbID).length > 0
+    ) {
       return true;
     }
     return false;
   };
   const ifExistsShow = show => {
-    
-    if (getShowsArray.filter(item => item?.imdbID === show?.imdbID).length > 0) {
+    if (
+      getShowsArray.filter(item => item?.imdbID === show?.imdbID).length > 0
+    ) {
       return true;
     }
     return false;
   };
-  // const ifExistsMovie = () => {
-  //   if (getMoviesArray > 0) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
-  // const ifExistsShow = () => {
-  //   if (getShowsArray > 0) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
-
-  // useEffect(() => {
-  //   if (fav) handleAddFavMovie(data);
-  // }, [fav]);
 
   return (
     <View style={{marginVertical: 12}}>
@@ -116,7 +98,7 @@ const MovieCard = props => {
                     ? handleRemoveFavShow(data)
                     : handleAddFavShow(data);
                 }
-              }} //setFav(!fav)
+              }}
               activeOpacity={0.7}
               style={{
                 flexDirection: 'row',
