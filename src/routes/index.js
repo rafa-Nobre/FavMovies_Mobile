@@ -21,9 +21,9 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Routes = () => {
-  const [user, setUser] = useState('teste');
+  const [user, setUser] = useState(undefined);
 
-  /* const checkUser = async () => {
+   const checkUser = async () => {
     try {
       const authUser = await Auth.currentAuthenticatedUser({bypassCache: true});
       setUser(authUser);
@@ -51,7 +51,7 @@ const Routes = () => {
         <ActivityIndicator />
       </View>
     );
-  } */
+  }
 
   return (
     <NavigationContainer>
@@ -61,7 +61,7 @@ const Routes = () => {
             name="Home"
             component={HomeScreen}
             options={{
-              tabBarLabel: `Início`,
+              headerShown: false,
               tabBarIcon: ({color, size}) => (
                 <MaterialCommunityIcons name="home" color={color} size={size} />
               ),

@@ -1,11 +1,65 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import { ScreenStackHeaderLeftView } from 'react-native-screens';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  addFavMovies,
+  addFavShows,
+  removeFavMovie,
+  removeFavShow,
+  getFavMovies,
+  getFavShows,
+} from '../../redux/movieSlice';
 
 const MovieCard = props => {
   const {data} = props;
-  const [fav, setFav ]= React.useState(false);
+
+  const favMovies = useSelector(getFavMovies);
+  const favShows = useSelector(getFavShows);
+
+  const getMoviesArray = Object.values(favMovies);
+  const getShowsArray = Object.values(favShows);
+
+  //Dispatchers
+  const dispatch = useDispatch();
+  const addToFavMovies = movie => dispatch(addFavMovies(movie));
+  const addToFavShows = show => dispatch(addFavShows(show));
+  const removeFromFavMovies = movie => dispatch(removeFavMovie(movie));
+  const removeFromFavShows = show => dispatch(removeFavShow(show));
+
+  //Handlers
+  const handleAddFavMovie = movie => {
+    console.log('MovieCard ~ handleAddFavMovie ~ 37');
+    addToFavMovies(movie);
+  };
+  const handleAddFavShow = show => {
+    console.log('MovieCard ~ handleAddFavShow ~ 41');
+    addToFavShows(show);
+  };
+  const handleRemoveFavMovie = movie => {
+    removeFromFavMovies(movie);
+  };
+  const handleRemoveFavShow = show => {
+    removeFromFavShows(show);
+  };
+
+  //Verificando o array de filmes e séries
+  const ifExistsMovie = movie => {
+    if (
+      getMoviesArray.filter(item => item?.imdbID === movie?.imdbID).length > 0
+    ) {
+      return true;
+    }
+    return false;
+  };
+  const ifExistsShow = show => {
+    if (
+      getShowsArray.filter(item => item?.imdbID === show?.imdbID).length > 0
+    ) {
+      return true;
+    }
+    return false;
+  };
 
   return (
     <View style={{marginVertical: 12}}>
@@ -34,12 +88,25 @@ const MovieCard = props => {
           {/*Fav Button*/}
           <View style={{marginTop: 14}}>
             <TouchableOpacity
-              onPress={() => setFav(!fav)}
+              onPress={() => {
+                if (data.Type == 'movie') {
+                  ifExistsMovie(data)
+                    ? handleRemoveFavMovie(data)
+                    : handleAddFavMovie(data);
+                } else {
+                  ifExistsShow(data)
+                    ? handleRemoveFavShow(data)
+                    : handleAddFavShow(data);
+                }
+              }}
               activeOpacity={0.7}
               style={{
                 flexDirection: 'row',
                 padding: 2,
-                backgroundColor: fav ? '#fded00' : '#2D3038',
+                backgroundColor:
+                  ifExistsMovie(data) || ifExistsShow(data)
+                    ? '#3393ED'
+                    : '#ed8d33',
                 borderRadius: 20,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -47,8 +114,16 @@ const MovieCard = props => {
                 width: 40,
               }}>
               <MaterialCommunityIcons
-                name="star-outline"
-                color={ fav ? '#dacb0f' :"#64676D"}
+                name={
+                  ifExistsMovie(data) || ifExistsShow(data)
+                    ? 'star-outline'
+                    : 'star'
+                }
+                color={
+                  ifExistsMovie(data) || ifExistsShow(data)
+                    ? 'white'
+                    : '#64676D'
+                }
                 size={24}
               />
             </TouchableOpacity>
